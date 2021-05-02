@@ -55,7 +55,7 @@
 
     <h2>Enter URL</h2>
 
-    <form action="includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);">
+    <form action="inc/process.php?action=update" method="post" onsubmit="return updateLocation(this);">
         <input type="text" name="u" id="input" size="40">
         <input type="submit" value="Go">
 

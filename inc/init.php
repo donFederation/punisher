@@ -64,7 +64,7 @@ $httpErrors = array('404' => 'A 404 error occurs when the requested resource doe
 
 
 # Current version - no need to change this!
-$assetReplace['version'] = 'v1.4.15';
+$assetReplace['version'] = 'v1.0.1';
 
 # Look for a config.php in the /assets/assetName/ folder
 # If running multiple proxies off the same source files
@@ -657,13 +657,6 @@ function render($b)
                     $b = str_replace('<!--RRR-' . $n[1] . '-->', $r[$n[1]], $b);
                 }
             }
-        }
-        $j = 'PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+PGh0bWw+PGhlYWQ+PHRpdGxlPkVycm9yPC90aXRsZT48L2hlYWQ+PGJvZHkgc3R5bGU9ImZvbnQtc2l6ZTpsYXJnZTsiPlRoaXMgaW5zdGFsbGF0aW9uIG9mIHRoZSA8YSBocmVmPSJodHRwOi8vd3d3LmdseXBlLmNvbS8iPkdseXBlPC9hPiZ0cmFkZTsgc29mdHdhcmUgaXMgYmVpbmcgdXNlZCA=';
-        if (!$f && (empty($CONFIG[$k]) || strlen($CONFIG[$k]) != $h[53] . $h[59] || substr_count($CONFIG[$k], $h[75]) != $h[54] || !preg_match('#[0-9]#', $CONFIG[$k]) || !preg_match('#[a-z]#i', $CONFIG[$k]))) {
-            $b = base64_decode($j) . base64_decode('d2l0aG91dCBhIHByb3BlciBjb3B5cmlnaHQgYXR0cmlidXRpb24gbm90aWNlIHRvIEdseXBlIChjb21tb25seSByZWZlcnJlZCB0byBhcyB0aGUgJnF1b3Q7Y3JlZGl0IGxpbmsmcXVvdDspLiBJdCBpcyBhIHZpb2xhdGlvbiBvZiB0aGUgR2x5cGUgU29mdHdhcmUgTGljZW5zZSBBZ3JlZW1lbnQgdG8gcmVtb3ZlLCBhbHRlciBvciBjb25jZWFsIHRoZSBjcmVkaXQgbGluayB3aXRob3V0IGEgdmFsaWQgbGljZW5zZSB0byBkbyBzby4gUGxlYXNlIDxhIGhyZWY9Imh0dHA6Ly93d3cuZ2x5cGUuY29tL2xpY2Vuc2UiPnB1cmNoYXNlIGEgbGljZW5zZTwvYT4gb3IgcmV0dXJuIHRoZSBjcmVkaXQgbGluayB0byB0aGUgdGVtcGxhdGUuPC9ib2R5PjwvaHRtbD4=');
-        }
-        if (stripos($s, $g) !== false || stripos($s, $p) !== false) {
-            $b = base64_decode($j) . base64_decode('b24gYSBkb21haW4gbmFtZSB3aGljaCBpbmNvcnBvcmF0ZXMgYSB0cmFkZW1hcmsgKG9yIGEgc2xpZ2h0IHZhcmlhdGlvbiBvZiBhIHRyYWRlbWFyaykuIEl0IGlzIGEgdmlvbGF0aW9uIG9mIHRoZSBHbHlwZSBTb2Z0d2FyZSBMaWNlbnNlIEFncmVlbWVudCB0byB1dGlsaXplIHRoZSBHbHlwZSBzb2Z0d2FyZSBpbiBhbnkgbWFubmVyIHRoYXQgbWF5IGluZnJpbmdlIGFueSByaWdodHMgKGluY2x1ZGluZywgYnV0IG5vdCBsaW1pdGVkIHRvLCBhbnkgY29weXJpZ2h0LCB0cmFkZW1hcmsgb3Igb3RoZXIgaW50ZWxsZWN0dWFsIHByb3BlcnR5IHJpZ2h0cykgb2YgR2x5cGUgb3IgYW55IHRoaXJkIHBhcnR5LjwvYm9keT48L2h0bWw+');
         }
     }
     header('Content-Length: ' . strlen($b));

@@ -31,7 +31,7 @@
     <h1>Warning!</h1>
     <p>The site you are attempting to browse is on a secure connection. This proxy is not on a secure connection.</p>
     <p>The target site may send sensitive data, which may be intercepted when the proxy sends it back to you.</p>
-    <form action="includes/process.php" method="get">
+    <form action="inc/process.php" method="get">
         <input type="hidden" name="action" value="sslagree">
         <input type="submit" value="Continue anyway...">
         <input type="button" value="Return to index" onclick="window.location='.';">

@@ -36,7 +36,7 @@
     <h1>Authorization Required</h1>
     <p>The site <strong><?php echo $site; ?></strong> is requesting a username and password to access the realm
         "<strong><?php echo $realm; ?></strong>".</p>
-    <form action="includes/process.php?action=authenticate" method="post">
+    <form action="inc/process.php?action=authenticate" method="post">
         <label for="user">Username:</label>
         <input type="text" name="user" id="user">
         <label for="pass">Password:</label>

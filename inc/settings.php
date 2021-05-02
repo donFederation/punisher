@@ -158,6 +158,4 @@ $CONFIG['options']['stripObjects'] = array(
 );
 
 
-$CONFIG['version'] = '1.4.15';
-
-
+$CONFIG['version'] = '1.0.1';

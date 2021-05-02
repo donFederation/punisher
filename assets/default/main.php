@@ -10,16 +10,23 @@
         html, body {
             margin: 0;
             padding: 0;
-            background: #0b1933;
+            background: #000000;
             font-size: 100%;
             font-family: "trebuchet ms", arial, verdana;
             color: #444;
             text-align: center;
         }
 
+        *{
+            border-radius: 2px;
+            margin:2px;
+        }
+
         a {
-            color: #EF7B0A;
+            color: #ef0a0a;
             text-decoration: none;
+            display: inline-block;
+            padding: 8px;
         }
 
         a:hover {
@@ -44,9 +51,7 @@
         }
 
         #content {
-            background: #fff;
-            border-top: 3px solid #ce6c1c;
-            border-bottom: 3px solid #ce6c1c;
+            background:linear-gradient(177deg, #111111, #000000);
             padding: 20px;
         }
 
@@ -77,7 +82,7 @@
 
         h2 {
             font: bold 100% arial, verdana, sans-serif;
-            color: #3B578B;
+            color: #ffffff;
             border-bottom: 1px solid #ccc;
             padding-bottom: 3px;
             margin: 25px 0 10px 0;
@@ -264,7 +269,7 @@
 
         <!--[index_above_form]-->
 
-        <form action="includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);"
+        <form action="inc/process.php?action=update" method="post" onsubmit="return updateLocation(this);"
               class="form">
             <input type="text" name="u" id="input" size="40" class="textbox">
             <input type="submit" value="Go" class="button"> &nbsp; [<a style="cursor:pointer;"
