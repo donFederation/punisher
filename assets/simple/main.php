@@ -49,10 +49,6 @@
 
     <!--[error]-->
 
-    <h2>About</h2>
-
-    <!--[description]-->
-
     <h2>Enter URL</h2>
 
     <form action="inc/process.php?action=update" method="post" onsubmit="return updateLocation(this);">

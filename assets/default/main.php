@@ -17,9 +17,8 @@
             text-align: center;
         }
 
-        *{
-            border-radius: 2px;
-            margin:2px;
+        input{
+            padding: 8px;
         }
 
         a {
@@ -45,7 +44,8 @@
 
 
         #wrapper {
-            width: 700px;
+            width: 90%;
+            max-width:1200px;
             margin: 0 auto 0 auto;
             text-align: left;
         }
@@ -94,7 +94,6 @@
 
         form.form {
             font-size: 80%;
-            background-color: #f5f5f5;
             padding: 10px;
         }
 
@@ -129,7 +128,6 @@
         #nav li {
             padding: 0 5px 0 5px;
             display: inline;
-            border-left: 1px solid #ccc;
         }
 
         .left {
@@ -147,9 +145,12 @@
         }
 
         input.button {
-            margin-top: 10px;
             font-family: arial, verdana, sans-serif;
             font-size: 120%;
+            border:none;
+            background:#222;
+            color:#fff;
+            padding: 10px 20px;
         }
 
         label {
@@ -255,15 +256,12 @@
                 }
                 ?></a></h1>
     </div>
+    <center><img src="../assets/banner.png" /></center>
     <div id="content">
 
         <!-- CONTENT START -->
 
         <!--[error]-->
-
-        <h2 class="first">About</h2>
-
-        <!--[description]-->
 
         <h2>Enter URL</h2>
 
@@ -292,7 +290,7 @@
         </ul>
     </div>
     <div id="footer">
-        Powered by <a href="http://www.ţ.com/">Punisher</a>&reg; <!--[version]-->.
+        <p><a href="http://www.ţ.com/">Punisher</a>&reg;  <!--[version]--> 1985 - 2021</p><p style="font-size:5px;color:#444;">DON FEDERATION 👁 THE DON FEDERATION IS A WORLD LEADER IN PRODUCT DEVELOPMENT AND SERIVCES. CONTENT OF THE PAGES OF THIS WEBSITE IS FOR YOUR GENERAL INFORMATION AND USE ONLY. IT IS SUBJECT TO CHANGE WITHOUT NOTICE. THIS WEBSITE USES COOKIES TO MONITOR BROWSING PREFERENCES. IF YOU DO ALLOW COOKIES TO BE USED, YOUR PERSONAL INFORMATION MAY BE STORED BY US FOR USE BY THIRD PARTIES. NO WARRANTY OR GUARANTEE TO THE ACCURACY, OF THE INFORMATION AND MATERIALS FOUND ON THIS WEBSITE. MATERIAL WHICH IS OWNED BY OR LICENSED TO US NOT LIMITED TO, THIS WEBSITE, DESIGN, LAYOUT, LOOK, APPEARANCE AND GRAPHICS. REPRODUCTION IS PROHIBITED OTHER THAN IN ACCORDANCE WITH THE COPYRIGHT NOTICE, WHICH FORMS PART OF THESE TERMS AND CONDITIONS. UNAUTHORISED USE OF THIS WEBSITE MAY GIVE RISE TO A CRIMINAL OFFENCE. YOUR USE OF THIS WEBSITE AND ANY DISPUTE ARISING OUT OF SUCH USE OF THE WEBSITE IS SUBJECT TO THE LAWS OF ENGLAND, NORTHERN IRELAND, SCOTLAND AND WALES.</p>
     </div>
 </div>
 </body>

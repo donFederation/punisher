@@ -10,10 +10,6 @@ $assetReplace['meta_keywords'] = <<<OUT
 
 OUT;
 
-$assetReplace['description'] = <<<OUT
-   <p>punish em</p>
-OUT;
-
 $assetReplace['index_above_form'] = <<<OUT
 
 OUT;
