@@ -24,8 +24,6 @@ echo <<<OUT
 OUT;
 
 
-
-
 # Server side storage
 if ($CONFIG['cookies_on_server']) {
 
@@ -118,8 +116,6 @@ if ($CONFIG['cookies_on_server']) {
 }
 
 
-
-
 # Any to print?
 if (empty($showCookies)) {
 
@@ -176,8 +172,6 @@ OUT;
 }
 
 
-
-
 echo <<<OUT
 			<tr>
 				<th colspan="3" align="right"><input type="submit" value="Delete"></th>
@@ -196,8 +190,6 @@ echo <<<OUT
 		}
 	</script>
 OUT;
-
-
 
 
 # Get buffer

@@ -20,10 +20,7 @@ $CONFIG['gzip_return'] = false;
 $CONFIG['ssl_warning'] = true;
 
 
-
-
 $CONFIG['override_javascript'] = false;
-
 
 
 $CONFIG['load_limit'] = 0;
@@ -32,9 +29,7 @@ $CONFIG['load_limit'] = 0;
 $CONFIG['footer_include'] = '';
 
 
-
 $CONFIG['path_info_urls'] = false;
-
 
 
 $CONFIG['unique_urls'] = false;
@@ -48,10 +43,7 @@ $CONFIG['hotlink_domains'] = array();
 $CONFIG['enable_logging'] = false;
 
 
-
-
 $CONFIG['logging_destination'] = $CONFIG['tmp_dir'] . 'logs/';
-
 
 
 $CONFIG['log_all'] = false;
@@ -63,7 +55,6 @@ $CONFIG['blacklist'] = array();
 $CONFIG['ip_bans'] = array();
 
 
-
 $CONFIG['connection_timeout'] = 5;
 
 
@@ -73,10 +64,7 @@ $CONFIG['transfer_timeout'] = 0;
 $CONFIG['max_filesize'] = 0;
 
 
-
 $CONFIG['download_speed_limit'] = 0;
-
-
 
 
 $CONFIG['resume_transfers'] = false;
@@ -87,10 +75,7 @@ $CONFIG['queue_transfers'] = true;
 $CONFIG['cookies_on_server'] = false;
 
 
-
 $CONFIG['cookies_folder'] = $CONFIG['tmp_dir'] . 'cookies/';
-
-
 
 
 $CONFIG['encode_cookies'] = false;

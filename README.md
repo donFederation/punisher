@@ -16,3 +16,8 @@ Some of Punisher's features:
 * easily fetch the contents of a web page
 * supports passing cookies on redirects
 
+<img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/install.png" />
+<img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/settings.png" />
+<img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/visitor.png" />
+<img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/google.png" />
+

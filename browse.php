@@ -226,20 +226,6 @@ if ($CONFIG['max_filesize'] && defined('CURLOPT_MAXFILESIZE')) {
 $toSet[CURLOPT_DNS_CACHE_TIMEOUT] = 600;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $toSet[CURLOPT_HTTPHEADER][] = 'Accept-Language: ' . $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 }

@@ -11,12 +11,36 @@
             font: 80% Tahoma;
         }
 
-            margin: 100px auto;
-            width: 500px;
-            text-align: left;
-            background: #fff;
-            padding: 10px;
-            border: 5px solid #ccc;
+        margin:
+
+        100
+        px auto
+
+        ;
+        width:
+
+        500
+        px
+
+        ;
+        text-align: left
+
+        ;
+        background: #fff
+
+        ;
+        padding:
+
+        10
+        px
+
+        ;
+        border:
+
+        5
+        px solid #ccc
+
+        ;
         }
 
         form {

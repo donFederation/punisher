@@ -399,7 +399,7 @@ OUT;
         echo <<<OUT
 </script>
 <link rel="icon" type="image/png" href="favicon.ico">
-<style type="text/css">body{margin:0;font-size:62.5%;font-family:Verdana, Arial, Helvetica, sans-serif;padding:15px 0;background:#000}#wrap{width:1200px;margin:0 auto;}#top_content{padding:0 10px}#topheader{padding:25px 15px 15px;margin:0 auto;}#rightheader{float:right;width:375px;height:40px;text-align:right}#rightheader p{padding:35px 15px 0 0;margin:0;text-align:right}#leftheader{float:left;width:375px;height:40px;text-align:left}#leftheader p{padding:35px 15px 0 0;margin:0;text-align:left}#title{text-align:center;padding:0;margin:0;font-size:2.5em;color:#FFF}#title span{font-size:0.5em;font-style:italic}#title a:link,#title a:visited{color:#FFF;text-decoration:none}#title a:hover{color:#E1F3C7}#navigation{background:#440000;clear:both;margin-bottom:5px;}#navigation ul{padding:0;margin:0;list-style:none;font-size:1.1em}#navigation ul li{display:inline}#navigation ul li a{color:#FFF;display:block;text-decoration:none;float:left;line-height:25px;padding:0 16px;border-right:1px solid #fff}#navigation ul li a:hover{background:#5494F3}#content{padding:15px;margin:0 auto;color: #eee;text-shadow: 0px 0px 2px #b30000;background: linear-gradient(180deg, #111,black)}#content h1,#content h2,#content h3,#content h4,#content h5{color:#ff0000}#content h1{font-family:"Trebuchet MS", Arial, Helvetica;padding:0;margin:0 0 15px;font-size:2em}#content h2{font-family:"Trebuchet MS", Arial, Helvetica;padding:0;margin:0 0 15px;font-size:1.5em}#top_body,#content_body{padding:0 25px}#footer{color:#FFF;padding:0 10px 13px}#footer p a:link,#footer p a:visited{color:#FFF;font-style:italic;text-decoration:none}#footer #footer_bg{padding:15px 15px 25px;border-top:1px solid #000000}#footer #design{display:block;width:150px;height:30px;float:right;line-height:20px;padding:0 5px;text-align:right;color:#E1F3C7}#footer #design a,#rightheader a:link,#rightheader a:visited{color:#FFF;text-decoration:underline}.table{margin-bottom:15px;width:100%;border-collapse:collapse}.table_header td a:link,.table_header td a:visited{text-decoration:underline;color:#467aa7}.table_header td{padding:5px 10px;color:#467aa7;border-top:1px solid #CBD6DE;border-bottom:1px solid #ADBECB;font-size:1.1em;font-weight:bold;border:1px solid #CBD6DE}.row1 td,.row2 td,.row3 td,.row_hover td,.paging_row td{padding:5px 10px;color:#666;border:1px solid #CBD6DE}.row1 td{background:#fff}.row2 td{background:#f6f6f6}.row3 td{background:#eee}.row1:hover td,.row2:hover td,.row3:hover td{background:#FBFACE;color:#000}.hidden{display:none}#content .little{font-size:9px}.clear{clear:both}.img_left{float:left;padding:1px;border:1px solid #ccc;margin:0 10px 10px 0}#content ul{font-size:1.1em;line-height:1.8em;margin:0 0 15px;padding:0;list-style-type:none}#content p{font-size:1.2em;margin:0;padding:0 0 15px;line-height:150%}#content p a:hover,.table a:hover,.form_table a:hover,.link a:hover{text-decoration:underline}#content ul.green li{padding:0 0 0 20px;margin:0;font-size:1.1em}#content ul.black li{padding:0 0 0 20px;margin:0;font-size:1.1em}#content ul.black li a:link,#content ul.black li a:visited{color:#666;text-decoration:none}#content ol{padding:0 0 0 25px;margin:0 0 15px;line-height:1.8em}#content ol li{font-size:1.1em}#content ol li a:link,#content ol li a:visited,#content ul.green li a:link,#content ul.green li a:visited,#content p a,#content p a:visited,.table a,.table a:visited,.form_table a,.link a{color:#73A822;text-decoration:none}#content ol li a:hover,#content ul.green li a:hover,.table_header td a:hover{color:#73A822;text-decoration:underline}#content p.paging{padding:5px;border:1px solid #CBD6DE;text-align:center;margin-bottom:15px;background:#eee}.small_input{font-size:10px}.form_table{margin-bottom:15px;font-size:1.1em}.form_table td{padding:5px 10px}input.button{margin:0;padding:5px;background:#000;color:#fff;border:none;font-size:11px;font-family:Verdana, Arial, Helvetica, sans-serif}input.inputgri,select.inputgri,textarea.inputgri{background:#eee;font-size:14px;border:1px solid #ccc;padding:5px}input.inputgri:focus,select.inputgri:focus,textarea.inputgri:focus{background:#fff;}textarea.inputgri{font-size:12px;font-family:Verdana, Arial, Helvetica, sans-serif;height:60px}.notice{background:#fff;border:1px solid #ff0000;padding:15px;margin-bottom:15px;font-size:1.2em;color:#ff0000}.notice_error{background:#FEDCDA;border:1px solid #CE090E;padding:15px;margin-bottom:15px;font-size:1.2em;color:#ff0000}.notice .close,.notice_error .close{cursor:pointer;color:#000;background:none;padding:5px;margin-right:2px;border:none}#notice a{color:#ff0000;text-decoration:underline}.other_links{background:#eee;border-top:1px solid #ccc;padding:5px;margin:0 0 15px}#content .other_links h2{color:#999;padding:0 0 0 3px;margin:0}#content .other_links ul li{padding:0 0 0 20px;}#content .other_links a,#content .other_links a:visited,#content ul.black li a:hover{color:#999;text-decoration:underline}#content .other_links a:hover{color:#666}code{font-size:1.2em;color:#73A822}#tooltip{width:20em;color:#fff;background:#555;font-size:12px;font-weight:normal;padding:5px;border:3px solid #333;text-align:left}#header{color:#ff0000;}.hr{border-top:2px solid #ccc;margin:5px 0 15px}.bold,#rightheader p span{font-weight:bold}.center{text-align:center}.right{text-align:right}.error-color{color:#CE090E}.ok-color{color:#70A522}.wide-input{width:350px}.small-input{width:50px}.tooltip{padding-bottom:1px;border-bottom:1px dotted #70A522;cursor:help}.bar{background:#73A822;height:10px;font-size:xx-small;padding:2px;color:#000}.comment{padding:5px;border:1px solid #CBD6DE;border-width:1px 0 1px 0;margin-bottom:15px;background:#f6f6f6}#content .comment p,#content .comment ul,#content .other_links ul,form,.checkbox_nomargins,.form_table p,#footer p{margin:0;padding:0}#preload{position:absolute;height:10px;top:-100px}*{border-radius:5px!important;}input{padding:8px!important;border:none!important;margin:5px!important;}</style>
+<style type="text/css">body{margin:0;font-size:62.5%;font-family:Verdana, Arial, Helvetica, sans-serif;padding:15px 0;background:url('./assets/bg.jpg') center center fixed}#wrap{width:1200px;margin:0 auto;}#top_content{padding:0 10px}#topheader{padding:25px 15px 15px;margin:0 auto;}#rightheader{float:right;width:375px;height:40px;text-align:right}#rightheader p{padding:35px 15px 0 0;margin:0;text-align:right}#leftheader{float:left;width:375px;height:40px;text-align:left}#leftheader p{padding:35px 15px 0 0;margin:0;text-align:left}#title{text-align:center;padding:0;margin:0;font-size:2.5em;color:#FFF}#title span{font-size:0.5em;font-style:italic}#title a:link,#title a:visited{color:#FFF;text-decoration:none}#title a:hover{color:#E1F3C7}#navigation{clear:both;margin-bottom:5px;}#navigation ul{padding:0;margin:0;list-style:none;font-size:1.1em}#navigation ul li{display:inline}#navigation ul li a{margin-bottom:10px;margin-top:5px;margin-right:2px;background: linear-gradient(266deg, #000, #111);color:#FFF;display:block;text-decoration:none;float:right;line-height:25px;padding:0 16px;border-right:1px solid #555}#navigation ul li a:hover{background:#111}#content{padding:15px;margin:0 auto;color: #eee;background: linear-gradient(180deg, #111,black)}#content h1,#content h2,#content h3,#content h4,#content h5{color:#333}#content h1{font-family:"Trebuchet MS", Arial, Helvetica;padding:0;margin:0 0 15px;font-size:2em}#content h2{font-family:"Trebuchet MS", Arial, Helvetica;padding:0;margin:0 0 15px;font-size:1.5em}#top_body,#content_body{padding:0 25px}#footer{color:#FFF;padding:0 10px 13px}#footer p a:link,#footer p a:visited{color:#FFF;font-style:italic;text-decoration:none}#footer #footer_bg{padding:15px 15px 25px;border-top:1px solid #000000}#footer #design{display:block;width:150px;height:30px;float:right;line-height:20px;padding:0 5px;text-align:right;color:#E1F3C7}#footer #design a,#rightheader a:link,#rightheader a:visited{color:#FFF;text-decoration:underline}.table{margin-bottom:15px;width:100%;border-collapse:collapse}.table_header td a:link,.table_header td a:visited{text-decoration:underline;color:#467aa7}.table_header td{padding:5px 10px;color:#467aa7;border-top:1px solid #CBD6DE;border-bottom:1px solid #ADBECB;font-size:1.1em;font-weight:bold;border:1px solid #CBD6DE}.row1 td,.row2 td,.row3 td,.row_hover td,.paging_row td{padding:5px 10px;color:#666;border:1px solid #CBD6DE}.row1 td{background:#fff}.row3 td{background:#eee}.row1:hover td,.row2:hover td,.row3:hover td{color:#000}.hidden{display:none}#content .little{font-size:9px}.clear{clear:both}.img_left{float:left;padding:1px;border:1px solid #ccc;margin:0 10px 10px 0}#content ul{font-size:1.1em;line-height:1.8em;margin:0 0 15px;padding:0;list-style-type:none}#content p{font-size:1.2em;margin:0;padding:0 0 15px;line-height:150%}#content p a:hover,.table a:hover,.form_table a:hover,.link a:hover{text-decoration:underline}#content ul.green li{padding:0 0 0 20px;margin:0;font-size:1.1em}#content ul.black li{padding:0 0 0 20px;margin:0;font-size:1.1em}#content ul.black li a:link,#content ul.black li a:visited{color:#666;text-decoration:none}#content ol{padding:0 0 0 25px;margin:0 0 15px;line-height:1.8em}#content ol li{font-size:1.1em}#content ol li a:link,#content ol li a:visited,#content ul.green li a:link,#content ul.green li a:visited,#content p a,#content p a:visited,.table a,.table a:visited,.form_table a,.link a{color:#73A822;text-decoration:none}#content ol li a:hover,#content ul.green li a:hover,.table_header td a:hover{color:#73A822;text-decoration:underline}#content p.paging{padding:5px;border:1px solid #CBD6DE;text-align:center;margin-bottom:15px;background:#eee}.small_input{font-size:10px}.form_table{margin-bottom:15px;font-size:1.1em}.form_table td{padding:5px 10px}input.button{margin:0;padding:5px;background:#222;color:#fff;border:none;font-size:11px;font-family:Verdana, Arial, Helvetica, sans-serif}input.button:hover{background:#ff0000;color:#000;cursor:pointer;}input.inputgri,select.inputgri,textarea.inputgri{background:#eee;font-size:14px;border:1px solid #ccc;padding:5px}input.inputgri:focus,select.inputgri:focus,textarea.inputgri:focus{background:#fff;}textarea.inputgri{font-size:12px;font-family:Verdana, Arial, Helvetica, sans-serif;height:60px}.notice{background:#fff;border:1px solid #ff0000;padding:15px;margin-bottom:15px;font-size:1.2em;color:#ff0000}.notice_error{background:#FEDCDA;border:1px solid #CE090E;padding:15px;margin-bottom:15px;font-size:1.2em;color:#ff0000}.notice .close,.notice_error .close{cursor:pointer;color:#000;background:none;padding:5px;margin-right:2px;border:none}#notice a{color:#ff0000;text-decoration:underline}.other_links{background:#eee;border-top:1px solid #ccc;padding:5px;margin:0 0 15px}#content .other_links h2{color:#999;padding:0 0 0 3px;margin:0}#content .other_links ul li{padding:0 0 0 20px;}#content .other_links a,#content .other_links a:visited,#content ul.black li a:hover{color:#999;text-decoration:underline}#content .other_links a:hover{color:#666}code{font-size:1.2em;color:#73A822}#tooltip{width:20em;color:#fff;background:#555;font-size:12px;font-weight:normal;padding:5px;border:3px solid #333;text-align:left}#header{color:#333;}.hr{border-top:2px solid #ccc;margin:5px 0 15px}.bold,#rightheader p span{font-weight:bold}.center{text-align:center}.right{text-align:right}.error-color{color:#CE090E}.ok-color{color:#70A522}.wide-input{width:350px}.small-input{width:50px}.tooltip{padding-bottom:1px;border-bottom:1px dotted #70A522;cursor:help}.bar{background:#73A822;height:10px;font-size:xx-small;padding:2px;color:#000}.comment{padding:5px;border:1px solid #CBD6DE;border-width:1px 0 1px 0;margin-bottom:15px;background:#f6f6f6;color:#000;}#content .comment p,#content .comment ul,#content .other_links ul,form,.checkbox_nomargins,.form_table p,#footer p{margin:0;padding:0}#preload{position:absolute;height:10px;top:-100px}a{color:#333!important;}a:hover{color:#ff0000!important}*{transition: 1s!important;border-radius:5px!important;}input{padding:8px!important;border:none!important;margin:5px!important;}</style>
 </head>
 <body>
 	<div id="wrap">
@@ -655,7 +655,6 @@ class User
 }
 
 
-
 class Notice
 {
 
@@ -743,8 +742,6 @@ class Notice
 }
 
 
-
-
 # Create output object
 $output = new SkinOutput;
 
@@ -766,8 +763,6 @@ $error = new Notice('error');
 $input = new Input;
 
 
-
-
 # Add notice handlers as observers of the output object
 $output->addObserver($confirm);
 $output->addObserver($error);
@@ -778,7 +773,6 @@ $location->addObserver($error);
 
 # Pass user details to output object
 $output->admin = $user->name;
-
 
 
 if ($input->gFetch && $user->isAdmin()) {
@@ -866,8 +860,6 @@ if ($input->gFetch && $user->isAdmin()) {
 }
 
 
-
-
 if (!$settingsLoaded) {
 
     # Show error and exit
@@ -882,8 +874,6 @@ if (!$settingsLoaded) {
 }
 
 
-
-
 # Are we an admin? If not, force login page.
 if (!$user->isAdmin()) {
     $action = 'login';
@@ -893,8 +883,6 @@ if (!$user->isAdmin()) {
 if (!isset($adminDetails)) {
     $action = 'install';
 }
-
-
 
 
 # URI to self
@@ -909,11 +897,7 @@ if ($user->isAdmin()) {
 }
 
 
-
-
 switch ($action) {
-
-
 
 
     case 'install':
@@ -1037,8 +1021,6 @@ OUT;
         break;
 
 
-
-
     case 'login':
 
         # Do we have any login details to process?
@@ -1109,8 +1091,6 @@ OUT;
         break;
 
 
-
-
     case 'logout':
 
         # Clear all user data
@@ -1123,8 +1103,6 @@ OUT;
         $location->redirect('login');
 
         break;
-
-
 
 
     case '':
@@ -1168,9 +1146,6 @@ OUT;
         );
 
         # --------------------------------------
-
-        # Print page header
-        $output->bodyTitle = 'Welcome to your control panel';
 
         #
         # Punisher news
@@ -1245,8 +1220,6 @@ OUT;
         $output->addFooterLinks('Punisher support forum at Proxy.org', 'http://proxy.org/forum/punisher-proxy/');
 
         break;
-
-
 
 
     case 'settings':
@@ -1780,7 +1753,6 @@ OUT;
         break;
 
 
-
     case 'blockscript':
         if (file_exists($bsc = $_SERVER['DOCUMENT_ROOT'] . '/blockscript/tmp/config.php')) {
             include($bsc);
@@ -1835,7 +1807,6 @@ OUT;
             echo '<div class="hr"></div><h2>Your BlockScript Installation</h2><p><a href="/blockscript/detector.php?blockscript=setup&bsap=' . $admin_password . '" target="_blank">Login To Your BlockScript Control Panel</a></p>';
         }
         break;
-
 
 
     case 'logs':
@@ -2005,8 +1976,6 @@ OUT;
 OUT;
 
         break;
-
-
 
 
     case 'logs-view':
@@ -2181,8 +2150,6 @@ OUT;
         break;
 
 
-
-
     default:
 
         # Send 404 status
@@ -2197,7 +2164,6 @@ OUT;
 OUT;
 
 }
-
 
 
 # Get buffer

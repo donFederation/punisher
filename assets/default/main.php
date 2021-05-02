@@ -17,19 +17,29 @@
             text-align: center;
         }
 
-        input{
+        body {
+            background: url('../assets/bg.jpg') center center;
+        }
+
+        * {
+            transition: 1s;
+        }
+
+        input {
             padding: 8px;
         }
 
         a {
-            color: #ef0a0a;
+            color: #333;
             text-decoration: none;
             display: inline-block;
             padding: 8px;
+            text-decoration: none !important;
         }
 
         a:hover {
             text-decoration: underline;
+            color: #ef0a0a;
         }
 
         p {
@@ -45,13 +55,13 @@
 
         #wrapper {
             width: 90%;
-            max-width:1200px;
+            max-width: 1200px;
             margin: 0 auto 0 auto;
             text-align: left;
         }
 
         #content {
-            background:linear-gradient(177deg, #111111, #000000);
+            background: linear-gradient(177deg, #111111, #000000);
             padding: 20px;
         }
 
@@ -82,10 +92,11 @@
 
         h2 {
             font: bold 100% arial, verdana, sans-serif;
-            color: #ffffff;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 3px;
-            margin: 25px 0 10px 0;
+            color: #333;
+            border-bottom: 1px solid #111;
+            padding-bottom: 20px;
+            margin: 10px 0 20px 0;
+            font-style: italic;
         }
 
         p + p {
@@ -120,7 +131,7 @@
             text-align: right;
             list-style-type: none;
             font-size: 80%;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #111;
             margin: 20px 0 0 0;
             padding: 0;
         }
@@ -147,10 +158,16 @@
         input.button {
             font-family: arial, verdana, sans-serif;
             font-size: 120%;
-            border:none;
-            background:#222;
-            color:#fff;
-            padding: 10px 20px;
+            border: none;
+            background: #222;
+            color: #fff;
+            padding: 10px 30px;
+        }
+
+        input.button:hover {
+            background: #ff0000;
+            color: #000;
+            cursor: pointer;
         }
 
         label {
@@ -226,6 +243,16 @@
             text-align: left;
             background-color: #555555;
         }
+
+        .blink_me {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
     <?= injectionJS(); ?>
     <script type="text/javascript">
@@ -256,14 +283,14 @@
                 }
                 ?></a></h1>
     </div>
-    <center><img src="../assets/banner.png" /></center>
+    <center><img src="../assets/banner.png"/></center>
     <div id="content">
 
         <!-- CONTENT START -->
 
         <!--[error]-->
 
-        <h2>Enter URL</h2>
+        <h2>where to begin<span class="blink_me">_</span></h2>
 
         <!--[index_above_form]-->
 
@@ -290,7 +317,17 @@
         </ul>
     </div>
     <div id="footer">
-        <p><a href="http://www.ţ.com/">Punisher</a>&reg;  <!--[version]--> 1985 - 2021</p><p style="font-size:5px;color:#444;">DON FEDERATION 👁 THE DON FEDERATION IS A WORLD LEADER IN PRODUCT DEVELOPMENT AND SERIVCES. CONTENT OF THE PAGES OF THIS WEBSITE IS FOR YOUR GENERAL INFORMATION AND USE ONLY. IT IS SUBJECT TO CHANGE WITHOUT NOTICE. THIS WEBSITE USES COOKIES TO MONITOR BROWSING PREFERENCES. IF YOU DO ALLOW COOKIES TO BE USED, YOUR PERSONAL INFORMATION MAY BE STORED BY US FOR USE BY THIRD PARTIES. NO WARRANTY OR GUARANTEE TO THE ACCURACY, OF THE INFORMATION AND MATERIALS FOUND ON THIS WEBSITE. MATERIAL WHICH IS OWNED BY OR LICENSED TO US NOT LIMITED TO, THIS WEBSITE, DESIGN, LAYOUT, LOOK, APPEARANCE AND GRAPHICS. REPRODUCTION IS PROHIBITED OTHER THAN IN ACCORDANCE WITH THE COPYRIGHT NOTICE, WHICH FORMS PART OF THESE TERMS AND CONDITIONS. UNAUTHORISED USE OF THIS WEBSITE MAY GIVE RISE TO A CRIMINAL OFFENCE. YOUR USE OF THIS WEBSITE AND ANY DISPUTE ARISING OUT OF SUCH USE OF THE WEBSITE IS SUBJECT TO THE LAWS OF ENGLAND, NORTHERN IRELAND, SCOTLAND AND WALES.</p>
+        <p><a href="http://www.ţ.com/">Punisher</a>&reg;  <!--[version]--> 1985 - 2021</p>
+        <p style="font-size:5px;color:#444;">DON FEDERATION 👁 THE DON FEDERATION IS A WORLD LEADER IN PRODUCT
+            DEVELOPMENT AND SERIVCES. CONTENT OF THE PAGES OF THIS WEBSITE IS FOR YOUR GENERAL INFORMATION AND USE ONLY.
+            IT IS SUBJECT TO CHANGE WITHOUT NOTICE. THIS WEBSITE USES COOKIES TO MONITOR BROWSING PREFERENCES. IF YOU DO
+            ALLOW COOKIES TO BE USED, YOUR PERSONAL INFORMATION MAY BE STORED BY US FOR USE BY THIRD PARTIES. NO
+            WARRANTY OR GUARANTEE TO THE ACCURACY, OF THE INFORMATION AND MATERIALS FOUND ON THIS WEBSITE. MATERIAL
+            WHICH IS OWNED BY OR LICENSED TO US NOT LIMITED TO, THIS WEBSITE, DESIGN, LAYOUT, LOOK, APPEARANCE AND
+            GRAPHICS. REPRODUCTION IS PROHIBITED OTHER THAN IN ACCORDANCE WITH THE COPYRIGHT NOTICE, WHICH FORMS PART OF
+            THESE TERMS AND CONDITIONS. UNAUTHORISED USE OF THIS WEBSITE MAY GIVE RISE TO A CRIMINAL OFFENCE. YOUR USE
+            OF THIS WEBSITE AND ANY DISPUTE ARISING OUT OF SUCH USE OF THE WEBSITE IS SUBJECT TO THE LAWS OF ENGLAND,
+            NORTHERN IRELAND, SCOTLAND AND WALES.</p>
     </div>
 </div>
 </body>
