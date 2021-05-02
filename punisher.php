@@ -565,7 +565,7 @@ OUT;
 		<div id="footer">
 
 			<div id="footer_bg">
-				<p><a href="http://www.ţ.com/">Punisher</a>&reg; &copy; 1985 - 2021 All rights reserved</p>
+				<p><a href="http://www.ţ.com/">Punisher</a>&reg; 1985 - 2021 All rights reserved</p>
 			</div>
 
 		</div>
