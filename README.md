@@ -1,5 +1,7 @@
 <img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/banner.png" />
 
+<h1>Punisher</h1>
+
 Punisher is a PHP web proxy class. It automates retrieving web page content and posting forms, for example.
 
 Some of Punisher's features:
@@ -16,8 +18,10 @@ Some of Punisher's features:
 * easily fetch the contents of a web page
 * supports passing cookies on redirects
 
+<h2>Screenshots</h2>
+
 <img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/install.png" />
 <img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/settings.png" />
-<img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/visitor.png" />
+<img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/visitors.png" />
 <img width="100%" src="https://raw.githubusercontent.com/donPabloNow/punisher/master/assets/screenshots/google.png" />
 
