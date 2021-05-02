@@ -316,19 +316,15 @@ if ($options['allowCookies']) {
 
                 if (isset($toSend[$key]) && $toSend[$key]['path'] == $path && $toSend[$key]['domain'] > strlen($domain)) {
 
-                    # (i.e. the current one)
                     continue;
 
                 }
 
-                # Domain and path OK, decode cookie value
                 $value = base64_decode($value);
 
-                # Only send secure cookies on https connection - secure cookies marked by !SEC suffix
-                # so remove the suffix
+
                 $value = str_replace('!SEC', '', $value, $tmp);
 
-                # And if secure cookie but not https site, do not send
                 if ($tmp && $URL['scheme'] != 'https') {
                     continue;
                 }

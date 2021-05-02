@@ -11,8 +11,6 @@ $CONFIG['asset'] = 'default';
 
 $CONFIG['plugins'] = 'facebook.com,google.com,hotmail.com,live.com,msn.com,myspace.com,twitter.com,yahoo.com,youtube.com,ytimg.com';
 
-
-
 $CONFIG['tmp_dir'] = PUNISH_ROOT . '/tmp/';
 
 
@@ -161,6 +159,5 @@ $CONFIG['options']['stripObjects'] = array(
 
 
 $CONFIG['version'] = '1.4.15';
-
 
 

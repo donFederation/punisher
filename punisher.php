@@ -281,51 +281,36 @@ abstract class Output extends Overloader
 
     protected $output;
 
-    # Content only
     protected $content;
 
-    # Array of observers
     protected $observers = array();
 
-
-    # Output the page
     final public function out()
     {
 
-        # Notify our observers we're about to print
         $this->notifyObservers('print', $this);
 
-        # Wrap content in our wrapper
         $this->wrap();
 
-        # Send headers
         $this->sendHeaders();
 
-        # Send body
         print $this->output;
 
-        # Page completed, finish
         exit;
 
     }
 
 
-    # Override this to send custom headers instead of default (html)
-
     public function notifyObservers($action)
     {
 
-        # Determine method to call
         $method = 'on' . ucfirst($action);
 
-        # Prepare parameters
         $params = func_get_args();
         array_shift($params);
 
-        # Loop through all observers
         foreach ($this->observers as $obj) {
 
-            # If an observing method exists, call it
             if (method_exists($obj, $method)) {
 
                 call_user_func_array(array(&$obj, $method), $params);
@@ -337,22 +322,16 @@ abstract class Output extends Overloader
     }
 
 
-    # Wrapper for body content
-
     protected function wrap()
     {
         $this->output = $this->content;
     }
 
 
-    # Add content
-
     protected function sendHeaders()
     {
     }
 
-
-    # Register observers
 
     public function addContent($content)
     {
@@ -360,27 +339,21 @@ abstract class Output extends Overloader
     }
 
 
-    # Notify observers
-
     public function addObserver(&$obj)
     {
         $this->observers[] = $obj;
     }
 
 
-    # Send status code
-
     public function sendStatus($code)
     {
         header(' ', true, $code);
     }
 
-    # More overloading. Set value with key.
     public function __call($func, $args)
     {
         if (substr($func, 0, 3) == 'add' && strlen($func) > 3 && !isset($args[2])) {
 
-            # Saving with key or not?
             if (isset($args[1])) {
                 $this->data[strtolower(substr($func, 3))][$args[0]] = $args[1];
             } else {
@@ -392,27 +365,20 @@ abstract class Output extends Overloader
 
 }
 
-# Output with our HTML skin
 class SkinOutput extends Output
 {
 
-    # Print all
     protected function wrap()
     {
 
-        # Self
         $self = ADMIN_URI;
 
-        # Prepare date
         $date = date('H:i, d F Y');
 
-        # Append "punisher control panel" to title
         $title = $this->title . ($this->title ? ' : ' : '') . 'Punisher control panel';
 
-        # Buffer so we can get this into a variable
         ob_start();
 
-        # Print output
         echo <<<OUT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -423,12 +389,10 @@ class SkinOutput extends Output
 <script type="text/javascript">
 OUT;
 
-        # Add domReady javascript
         if ($this->domReady) {
             echo 'window.addDomReadyFunc(function(){', $this->printAll('domReady'), '});';
         }
 
-        # Add other javascript
         if ($this->javascript) {
             echo $this->printAll('javascript');
         }
@@ -455,7 +419,6 @@ OUT;
 						<br />
 OUT;
 
-        # Add the "welcome" and log out link
         if ($this->admin) {
             echo "welcome, <i>{$this->admin}</i> : <strong><a href=\"{$self}?logout\">log out</a></strong>\r\n";
         }
@@ -476,7 +439,6 @@ OUT;
 					<ul>
 OUT;
 
-        # Add navigation
         if (is_array($this->navigation)) {
 
             foreach ($this->navigation as $text => $href) {
@@ -500,10 +462,8 @@ OUT;
 				<h1>{$this->bodyTitle}</h1>
 OUT;
 
-        # Do we have any error messages?
         if ($this->error) {
 
-            # Print all
             foreach ($this->error as $id => $message) {
                 echo <<<OUT
 				<div class="notice_error" id="notice_error_{$id}">
@@ -515,10 +475,8 @@ OUT;
 
         }
 
-        # Do we have any confirmation messages?
         if ($this->confirm) {
 
-            # Print all
             foreach ($this->confirm as $id => $message) {
                 echo <<<OUT
 				<div class="notice" id="notice_{$id}">
@@ -530,10 +488,8 @@ OUT;
 
         }
 
-        # Print content
         echo $this->content;
 
-        # Print footer links
         if (is_array($this->footerLinks)) {
 
             echo '
@@ -554,8 +510,6 @@ OUT;
 
         }
 
-
-        # And finish off the page
         echo <<<OUT
 
 			</div>
@@ -582,12 +536,10 @@ OUT;
 
         $this->output = ob_get_contents();
 
-        # Discard buffer
         ob_end_clean();
 
     }
 
-    # Wrap content in HTML skin
 
     private function printAll($name)
     {
@@ -601,8 +553,6 @@ OUT;
 
 }
 
-
-# Send output in "raw" form
 class RawOutput extends Output
 {
 
@@ -614,54 +564,38 @@ class RawOutput extends Output
 
 }
 
-
-# Manage sessions and stores user data
 class User
 {
 
-    # Username we're logged in as
     public $name;
 
-    # Our user agent
     public $userAgent;
 
-    # Our IP address
     public $IP;
 
-    # Reason for aborting a session
     public $aborted;
 
-
-    # Constructor sets up session
     public function __construct()
     {
 
-        # Don't try to start if autostarted
         if (session_id() == '') {
 
-            # Set up new session
             session_name('admin');
             session_start();
 
         }
 
-        # Always use a fresh ID for security
         session_regenerate_id();
 
-        # Prepare user data
         $this->userAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
         $this->IP = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
 
-        # Use user-agent and IP as identifying data since these shouldn't change mid-session
         $authKey = $this->userAgent . $this->IP;
 
-        # Do we have a stored auth key?
         if (isset($_SESSION['auth_key'])) {
 
-            # Compare our current auth_key to stored key
             if ($_SESSION['auth_key'] != $authKey) {
 
-                # Mismatch. Session may be stolen.
                 $this->clear();
                 $this->aborted = 'Session data mismatch.';
 
@@ -669,7 +603,6 @@ class User
 
         } else {
 
-            # No stored auth key, save it
             $_SESSION['auth_key'] = $authKey;
 
         }
@@ -974,10 +907,7 @@ if ($user->isAdmin()) {
     $output->addNavigation('Home', $self);
     $output->addNavigation('Edit Settings', $self . '?settings');
     $output->addNavigation('View Logs', $self . '?logs');
-    $output->addNavigation('Punisher&reg; Licenses', 'https://www.ţ.com/purchase.php');
     $output->addNavigation('BlockScript&reg;', $self . '?blockscript');
-    $output->addNavigation('Support Forum', 'http://proxy.org/forum/punisher-proxy/');
-    $output->addNavigation('Promote Your Proxy', 'https://proxy.org/advertise.shtml');
 }
 
 
