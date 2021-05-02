@@ -1,6 +1,6 @@
 # Punisher: 💀)=ε/̵͇̿̿/'̿'̿ ̿
-#### The Sub-Orbit &amp; Versatile, Deep Inverted Client King (PigHuter)
-### PHP Killer Punisher Proxy
+
+
 
 ```
 	include "Punisher.class.php";
@@ -34,12 +34,11 @@
 ```
 
 
-## About Punisher
-###The Sub-Orbit &amp; Versatile, Deep Inverted Client King
 
 Punisher is a PHP web proxy class. It automates retrieving web page content and posting forms, for example.
 
 Some of Punisher's features:
+
 * easily fetch the text from a web page
 * supports proxy hosts
 * supports basic user & pass authentication
@@ -51,11 +50,8 @@ Some of Punisher's features:
 * supports following html frames
 * easily fetch the contents of a web page
 * supports passing cookies on redirects
-	
 
-#### NB: Punisher requires PHP with PCRE (Perl Compatible Regular Expressions), and the OpenSSL extension for fetching HTTPS requests.	
 
-#####fetch($URI)
 
 ```
 This is the method used for fetching the contents of a web page.
@@ -65,7 +61,6 @@ If you are fetching frames, then $this->results
 contains each frame fetched in an array.
 ```
 
-#####fetchtext($URI)
 
 ```
 This behaves exactly like fetch() except that it only returns
@@ -73,7 +68,6 @@ the text from the page, stripping out html tags and other
 irrelevant data.		
 ```
 
-#####fetchform($URI)
 
 ```
 This behaves exactly like fetch() except that it only returns
@@ -81,7 +75,6 @@ the form elements from the page, stripping out html tags and other
 irrelevant data.		
 ```
 
-#####fetchlinks($URI)
 
 ```
 This behaves exactly like fetch() except that it only returns
@@ -89,14 +82,12 @@ the links from the page. By default, relative links are
 converted to their fully qualified URL form.
 ```
 
-#####submit($URI,$formvars)
 
 ```
 This submits a form to the specified $URI. $formvars is an
 array of the form variables to pass.
 ```
 
-#####submittext($URI,$formvars)
 
 ```
 This behaves exactly like submit() except that it only returns
@@ -104,14 +95,13 @@ the text from the page, stripping out html tags and other
 irrelevant data.		
 ```
 
-#####submitlinks($URI)
 
 ```
 This behaves exactly like submit() except that it only returns
 the links from the page. By default, relative links are
 converted to their fully qualified URL form.
 ```
-## Properties
+
 
 ```
 
@@ -147,9 +137,8 @@ converted to their fully qualified URL form.
 					if either $cafile or $capath is set, SSL certificate
 					verification is enabled
 ```
-## Examples
 
-#### Example: 	fetch a web page and display the return headers and the contents of the page (html-escaped):
+
 
 ```
 	include "Punisher.class.php";
@@ -172,7 +161,6 @@ converted to their fully qualified URL form.
 
 ```
 
-#### Example:	submit a form and print out the result headers and html-escaped page:
 
 ```
 	include "Punisher.class.php";
@@ -198,7 +186,6 @@ converted to their fully qualified URL form.
 
 ```
 
-#### Example:	showing functionality of all the variables:
 
 ```
 
@@ -236,7 +223,6 @@ converted to their fully qualified URL form.
 
 ```
 
-#### Example: 	fetched framed content and display the results
 
 ```
 	include "Punisher.class.php";
