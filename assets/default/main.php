@@ -18,7 +18,7 @@
         }
 
         body {
-            background: url('../assets/bg.jpg') center center;
+            background: url('../assets/bg.jpg') center center fixed;
         }
 
         * {
