@@ -11,46 +11,36 @@ switch ($action) {
 
     case 'update':
 
-        # Valid input?
         if (empty($_POST['u']) || !($url = clean($_POST['u']))) {
             break;
         }
 
-        # Check for a http protocol (no other protocols are supported)
         if (!preg_match('#^https?://#i', $url)) {
             $url = 'http://' . $url;
         }
 
-        # Generate bitfield from new options
         $bitfield = 0;
         $i = 0;
 
         foreach ($CONFIG['options'] as $name => $details) {
 
-            # Ignore forced
             if (!empty($details['force'])) {
                 continue;
             }
 
-            # Current bit
             $bit = pow(2, $i);
 
-            # Set bitfield
             if (!empty($_POST[$name])) {
                 setBit($bitfield, $bit);
             }
 
-            # Increase index
             ++$i;
         }
 
-        # Save new bitfield in session
         $_SESSION['bitfield'] = $bitfield;
 
-        # Save valid entry
         $_SESSION['no_hotlink'] = true;
 
-        # Redirect to target
         redirect(proxyURL($url, 'norefer'));
 
         break;
