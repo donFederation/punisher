@@ -31,7 +31,7 @@ $currentUA = escape_single_quotes($browser['user_agent']);
 $realReferrer = $browser['referrer'] == 'real' ? 'true' : 'false';
 $customReferrer = $browser['referrer'] == 'real' ? '' : escape_single_quotes($browser['referrer']);
 
-echo <<<OUT
+?>
 	<script type="text/javascript">
 
 		function updateCustomUA(select) {
@@ -78,12 +78,12 @@ echo <<<OUT
 		}
 
 		window.addDomReadyFunc(function() {
-			document.getElementById('user-agent').value			= '{$currentUA}';
-			if ( setSelect(document.getElementById('user-agent-presets'), '{$currentUA}') == false ) {
+			document.getElementById('user-agent').value			= '<?=$currentUA}';
+			if ( setSelect(document.getElementById('user-agent-presets'), '<?=$currentUA}') == false ) {
 				setCustomUA();
 			}
-			document.getElementById('real-referrer').checked	= {$realReferrer};
-			document.getElementById('custom-referrer').value	= '{$customReferrer}';
+			document.getElementById('real-referrer').checked	= <?=$realReferrer};
+			document.getElementById('custom-referrer').value	= '<?=$customReferrer}';
 		});
 	</script>
 
@@ -117,7 +117,7 @@ echo <<<OUT
 						<option value="Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; HTC Vision Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1">Android 2.3.5</option>
 						<option value="Mozilla/5.0 (BlackBerry; U; BlackBerry 9850; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.115 Mobile Safari/534.11+">Blackberry</option>
 						<option value="Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (S60; SymbOS; Opera Mobi/23.348; U; en) Presto/2.5.25 Version/10.54">Symbian with Opera Mini</option>
-						<option value="{$agent}"> - Current/Real</option>
+						<option value="<?=$agent?>"> - Current/Real</option>
 						<option value=""> - None</option>
 						<option value="custom"> - Custom...</option>			  
 					</select>
@@ -152,12 +152,12 @@ echo <<<OUT
 
 		<br>
 
-		<div style="text-align: center;"><input type="submit" value="Save"> {$return}</div>
+		<div style="text-align: center;"><input type="submit" value="Save"> <?=$return?></div>
 
-		{$returnField}
+		<?=$returnField}
 
 	</form>
-OUT;
+<?php
 
 $content = ob_get_contents();
 

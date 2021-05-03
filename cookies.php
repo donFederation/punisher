@@ -9,7 +9,7 @@ sendNoCache();
 ob_start();
 
 
-echo <<<OUT
+?>
 	<h2 class="first">Manage Cookies</h2>
 	<p>You can view and delete cookies set on your computer by sites accessed through our service. Your cookies are listed below:</p>
 	<form action="inc/process.php?action=cookies" method="post">
@@ -21,7 +21,7 @@ echo <<<OUT
 				<th>&nbsp;</th>
 			</tr>
 
-OUT;
+<?php
 
 
 # Server side storage
@@ -119,12 +119,12 @@ if ($CONFIG['cookies_on_server']) {
 # Any to print?
 if (empty($showCookies)) {
 
-    echo <<<OUT
+    ?>
 		<tr>
 			<td colspan="4" align="center">No cookies found</td>
 		</tr>
 
-OUT;
+<?php
 
 } else {
 
@@ -154,25 +154,25 @@ OUT;
 
             # Replace the value with a shorten version that expands onclick
             $value = <<<OUT
-			<span id="{$rowID}">{$truncated}<a style="cursor:pointer;" onclick="document.getElementById('{$rowID}').innerHTML='{$wrapped}';">...</a></span>
+			<span id="<?=$rowID?>"><?=$truncated?><a style="cursor:pointer;" onclick="document.getElementById('<?=$rowID?>').innerHTML='<?=$wrapped?>';">...</a></span>
 OUT;
         }
 
-        echo <<<OUT
+        ?>
 			<tr>
-				<td>{$website}</td>
-				<td>{$name}</td>
-				<td>{$value}</td>
-				<td><input type="checkbox" name="delete[]" value="{$cookie[0]}|{$cookie[1]}|{$name}"></td>
+				<td><?=$website?></td>
+				<td><?=$name?></td>
+				<td><?=$value?></td>
+				<td><input type="checkbox" name="delete[]" value="<?=$cookie[0]?>|<?=$cookie[1]?>|<?=$name?>"></td>
 			</tr>
 
-OUT;
+<?php
     }
 
 }
 
 
-echo <<<OUT
+?>
 			<tr>
 				<th colspan="3" align="right"><input type="submit" value="Delete"></th>
 				<th><input type="checkbox" name="checkall"  onclick="selectAll(this)"></th>
@@ -189,7 +189,7 @@ echo <<<OUT
 			}
 		}
 	</script>
-OUT;
+<?php
 
 
 # Get buffer

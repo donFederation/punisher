@@ -58,7 +58,7 @@ function postParse($input, $type)
 
                 $flvUrl = rawurlencode(proxyURL(sprintf('%s', videourl)));
 
-                $html = "<embed src=\"{$player_url}\" width=\"640\" height=\"360\" bgcolor=\"000000\" allowscriptaccess=\"always\" allowfullscreen=\"true\" type=\"application/x-shockwave-flash\" flashvars=\"width=640&height=360&type=video&fullscreen=true&volume=100&autostart=true&file=$flvUrl\" />";
+                $html = "<embed src=\"<?=$player_url?>\" width=\"640\" height=\"360\" bgcolor=\"000000\" allowscriptaccess=\"always\" allowfullscreen=\"true\" type=\"application/x-shockwave-flash\" flashvars=\"width=640&height=360&type=video&fullscreen=true&volume=100&autostart=true&file=$flvUrl\" />";
 
                 $input = preg_replace('#<div id="player-api"([^>]*)>.*<div class="clear"#s', '<div id="player-api"$1>' . $html . '</div></div><div class="clear"', $input, 1);
             }

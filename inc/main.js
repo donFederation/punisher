@@ -463,20 +463,20 @@ function parseJS(js, debug) {
     }
 
     // Always parse location.replace() and .innerHTML
-    js = replaceAll(js, /\b(location\s*\.\s*replace\s*\(\s*)[\s\S]{0,500}/g);
-    js = replaceAll(js, /(\.\s*innerHTML\s*=(?!=)\s*)[\s\S]{0,500}/g);
+    js = replaceAll(js, /\b(location\s*\.\s*replace\s*\(\s*)[\s\S]{0,500?>/g);
+    js = replaceAll(js, /(\.\s*innerHTML\s*=(?!=)\s*)[\s\S]{0,500?>/g);
 
     // If the "watched" flag is set, parse location=
     if (window.failed.watched) {
-        js = replaceAll(js, /\b(location(?:\s*\.\s*href)?\s*=(?!=)\s*)[\s\S]{0,500}/g);
+        js = replaceAll(js, /\b(location(?:\s*\.\s*href)?\s*=(?!=)\s*)[\s\S]{0,500?>/g);
     }
 
     // If the "setters" flag is set, parse all assignments
     if (window.failed.setters) {
-        js = replaceAll(js, /\b(\.href\s*=(?!=)\s*)[\s\S]{0,500}/g);
-        js = replaceAll(js, /\b(\.background\s*=(?!=)\s*)[\s\S]{0,500}/g);
-        js = replaceAll(js, /\b(\.src\s*=(?!=)\s*)[\s\S]{0,500}/g);
-        js = replaceAll(js, /\b(\.action\s*=(?!=)\s*)[\s\S]{0,500}/g);
+        js = replaceAll(js, /\b(\.href\s*=(?!=)\s*)[\s\S]{0,500?>/g);
+        js = replaceAll(js, /\b(\.background\s*=(?!=)\s*)[\s\S]{0,500?>/g);
+        js = replaceAll(js, /\b(\.src\s*=(?!=)\s*)[\s\S]{0,500?>/g);
+        js = replaceAll(js, /\b(\.action\s*=(?!=)\s*)[\s\S]{0,500?>/g);
     }
 
     // Prevent attempts to assign document.domain

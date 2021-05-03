@@ -749,7 +749,7 @@ function injectionJS()
     $jsFile = PUNISH_URL . '/inc/main.js?' . $CONFIG['version'];
 
     return <<<OUT
-	<script type="text/javascript">ginf={url:'{$siteURL}',script:'{$scriptName}',target:{h:'{$targetHost}',p:'{$targetPath}',b:'{$base}',u:'{$fullURL}'},enc:{u:'{$unique}',e:'{$options['encodeURL']}',x:'{$options['encodePage']}',p:'{$CONFIG['path_info_urls']}'},b:'{$bitfield}'{$optional}}</script>
+	<script type="text/javascript">ginf={url:'{$siteURL}',script:'{{}$scriptName}',target:{h:'{$targetHost}',p:'{$targetPath}',b:'{$base}',u:'{$fullURL}'},enc:{u:'{$unique}',e:'{$options['encodeURL']}',x:'{$options['encodePage']}',p:'{$CONFIG['path_info_urls']}'},b:'{$bitfield}'{$optional}}</script>
 	<script type="text/javascript" src="{$jsFile}"></script>
 OUT;
 }
