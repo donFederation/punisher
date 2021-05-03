@@ -6,6 +6,7 @@ Punisher is a PHP web proxy class. It automates retrieving web page content and 
 
 Some of Punisher's features:
 
+* PHP 8 Compatible
 * easily fetch the text from a web page
 * supports proxy hosts
 * supports basic user & pass authentication

@@ -174,7 +174,7 @@ input.button:hover {
 }
 
 label {
-    font-weight: light;
+    font-weight: normal;
 }
 
 #error {
@@ -194,7 +194,6 @@ table {
 }
 
 th {
-    font-size: normal;
     background: #ccc;
     border-width: 2px;
 }

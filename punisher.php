@@ -197,20 +197,8 @@ class Input
 
     static public function clean($val)
     {
-
-        static $magicQuotes;
-
-
-        if (!isset($magicQuotes)) {
-            $magicQuotes = get_magic_quotes_gpc();
-        }
-
         switch (true) {
             case is_string($val):
-
-                if ($magicQuotes) {
-                    $val = stripslashes($val);
-                }
 
                 $val = trim($val);
 
