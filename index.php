@@ -12,7 +12,7 @@ if (!isset($_GET['e']) || $_GET['e'] != 'no_hotlink') {
 
 $toShow = array();
 
-foreach ($CONFIG['options'] as $name => $details) {
+foreach ($SETTINGS['options'] as $name => $details) {
 
     if (!empty($details['force'])) {
         continue;
@@ -66,9 +66,9 @@ if (count($adminDetails) === 0) {
 }
 
 
-if ($CONFIG['tmp_cleanup_interval']) {
+if ($SETTINGS['tmp_cleanup_interval']) {
 
-    if (file_exists($file = $CONFIG['tmp_dir'] . 'cron.php')) {
+    if (file_exists($file = $SETTINGS['tmp_dir'] . 'cron.php')) {
 
         include $file;
 
@@ -99,9 +99,9 @@ if (!empty($runCleanup)) {
 
     ignore_user_abort(true);
 
-    file_put_contents($file, '<?php $nextRun = ' . ($_SERVER['REQUEST_TIME'] + round(3600 * $CONFIG['tmp_cleanup_interval'])) . ';');
+    file_put_contents($file, '<?php $nextRun = ' . ($_SERVER['REQUEST_TIME'] + round(3600 * $SETTINGS['tmp_cleanup_interval'])) . ';');
 
-    if (is_dir($CONFIG['cookies_folder']) && ($handle = opendir($CONFIG['cookies_folder']))) {
+    if (is_dir($SETTINGS['cookies_folder']) && ($handle = opendir($SETTINGS['cookies_folder']))) {
 
         $cutOff = $_SERVER['REQUEST_TIME'] - 86400;
 
@@ -111,7 +111,7 @@ if (!empty($runCleanup)) {
                 continue;
             }
 
-            $path = $CONFIG['cookies_folder'] . $file;
+            $path = $SETTINGS['cookies_folder'] . $file;
 
             if (filemtime($path) > $cutOff) {
                 continue;
@@ -124,9 +124,9 @@ if (!empty($runCleanup)) {
         closedir($handle);
     }
 
-    if ($CONFIG['tmp_cleanup_logs'] && is_dir($CONFIG['logging_destination']) && ($handle = opendir($CONFIG['logging_destination']))) {
+    if ($SETTINGS['tmp_cleanup_logs'] && is_dir($SETTINGS['logging_destination']) && ($handle = opendir($SETTINGS['logging_destination']))) {
 
-        $cutOff = $_SERVER['REQUEST_TIME'] - ($CONFIG['tmp_cleanup_logs'] * 86400);
+        $cutOff = $_SERVER['REQUEST_TIME'] - ($SETTINGS['tmp_cleanup_logs'] * 86400);
 
         while (($file = readdir($handle)) !== false) {
 
@@ -134,7 +134,7 @@ if (!empty($runCleanup)) {
                 continue;
             }
 
-            $path = $CONFIG['logging_destination'] . $file;
+            $path = $SETTINGS['logging_destination'] . $file;
 
             if (filemtime($path) > $cutOff) {
                 continue;

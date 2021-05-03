@@ -6,7 +6,7 @@ html {
     font-family: "trebuchet ms", arial, verdana;
     color: #444;
     text-align: center;
-    background: url('../bg.jpg') center center fixed!important;
+    background: url('../bg.jpg') center center fixed !important;
 }
 
 body {
@@ -15,11 +15,12 @@ body {
     opacity: 0;
     filter: blur(25px)
 }
+
 body.loaded {
     margin: 0;
-    height:100%;
-    background:none;
-    opacity:1;
+    height: 100%;
+    background: none;
+    opacity: 1;
     filter: blur(0px);
 }
 

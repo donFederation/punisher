@@ -22,7 +22,7 @@ switch ($action) {
         $bitfield = 0;
         $i = 0;
 
-        foreach ($CONFIG['options'] as $name => $details) {
+        foreach ($SETTINGS['options'] as $name => $details) {
 
             if (!empty($details['force'])) {
                 continue;
@@ -80,9 +80,9 @@ switch ($action) {
 
         $redirect = isset($_GET['return']) ? htmlentities($_GET['return']) : 'index.php';
 
-        if ($CONFIG['cookies_on_server']) {
+        if ($SETTINGS['cookies_on_server']) {
 
-            if (is_writable($file = $CONFIG['cookies_folder'] . punisher_session_id())) {
+            if (is_writable($file = $SETTINGS['cookies_folder'] . punisher_session_id())) {
 
                 unlink($file);
             }
@@ -123,9 +123,9 @@ switch ($action) {
             redirect('cookies.php');
         }
 
-        if ($CONFIG['cookies_on_server']) {
+        if ($SETTINGS['cookies_on_server']) {
 
-            if (file_exists($cookieFile = $CONFIG['cookies_folder'] . punisher_session_id()) && ($file = file($cookieFile))) {
+            if (file_exists($cookieFile = $SETTINGS['cookies_folder'] . punisher_session_id()) && ($file = file($cookieFile))) {
 
                 foreach ($file as $id => $line) {
 
@@ -164,7 +164,7 @@ switch ($action) {
 
                 list($domain, $path, $name) = $details;
 
-                if ($CONFIG['encode_cookies']) {
+                if ($SETTINGS['encode_cookies']) {
                     $name = COOKIE_PREFIX . '[' . urlencode(base64_encode($domain . ' ' . $path . ' ' . urlencode($name))) . ']';
                 } else {
                     $name = COOKIE_PREFIX . '[' . $domain . '][' . $path . '][' . $name . ']';

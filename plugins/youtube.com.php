@@ -3,13 +3,13 @@
 
 define('high_quality', true);
 
-$CONFIG['transfer_timeout'] = 3600;
+$SETTINGS['transfer_timeout'] = 3600;
 $options['stripJS'] = true;
 $options['stripObjects'] = true;
 $options['allowCookies'] = false;
-$CONFIG['max_filesize'] = 209715200;
-$CONFIG['resume_transfers'] = false;
-$CONFIG['queue_transfers'] = false;
+$SETTINGS['max_filesize'] = 209715200;
+$SETTINGS['resume_transfers'] = false;
+$SETTINGS['queue_transfers'] = false;
 
 function preParse($input, $type)
 {

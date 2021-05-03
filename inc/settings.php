@@ -1,141 +1,141 @@
 <?php
 
 
-$CONFIG['license_key'] = '';
+$SETTINGS['license_key'] = '';
 
 
-$CONFIG['enable_blockscript'] = false;
+$SETTINGS['enable_blockscript'] = false;
 
 
-$CONFIG['asset'] = 'default';
+$SETTINGS['asset'] = 'default';
 
-$CONFIG['plugins'] = 'facebook.com,google.com,hotmail.com,live.com,msn.com,myspace.com,twitter.com,yahoo.com,youtube.com,ytimg.com';
+$SETTINGS['plugins'] = 'facebook.com,google.com,hotmail.com,live.com,msn.com,myspace.com,twitter.com,yahoo.com,youtube.com,ytimg.com';
 
-$CONFIG['tmp_dir'] = PUNISH_ROOT . '/tmp/';
-
-
-$CONFIG['gzip_return'] = false;
+$SETTINGS['tmp_dir'] = PUNISH_ROOT . '/tmp/';
 
 
-$CONFIG['ssl_warning'] = true;
+$SETTINGS['gzip_return'] = false;
 
 
-$CONFIG['override_javascript'] = false;
+$SETTINGS['ssl_warning'] = true;
 
 
-$CONFIG['load_limit'] = 0;
+$SETTINGS['override_javascript'] = false;
 
 
-$CONFIG['footer_include'] = '';
+$SETTINGS['load_limit'] = 0;
 
 
-$CONFIG['path_info_urls'] = false;
+$SETTINGS['footer_include'] = '';
 
 
-$CONFIG['unique_urls'] = false;
-
-$CONFIG['stop_hotlinking'] = true;
+$SETTINGS['path_info_urls'] = false;
 
 
-$CONFIG['hotlink_domains'] = array();
+$SETTINGS['unique_urls'] = false;
+
+$SETTINGS['stop_hotlinking'] = true;
 
 
-$CONFIG['enable_logging'] = false;
+$SETTINGS['hotlink_domains'] = array();
 
 
-$CONFIG['logging_destination'] = $CONFIG['tmp_dir'] . 'logs/';
+$SETTINGS['enable_logging'] = false;
 
 
-$CONFIG['log_all'] = false;
-
-$CONFIG['whitelist'] = array();
-
-$CONFIG['blacklist'] = array();
-
-$CONFIG['ip_bans'] = array();
+$SETTINGS['logging_destination'] = $SETTINGS['tmp_dir'] . 'logs/';
 
 
-$CONFIG['connection_timeout'] = 5;
+$SETTINGS['log_all'] = false;
+
+$SETTINGS['whitelist'] = array();
+
+$SETTINGS['blacklist'] = array();
+
+$SETTINGS['ip_bans'] = array();
 
 
-$CONFIG['transfer_timeout'] = 0;
+$SETTINGS['connection_timeout'] = 5;
 
 
-$CONFIG['max_filesize'] = 0;
+$SETTINGS['transfer_timeout'] = 0;
 
 
-$CONFIG['download_speed_limit'] = 0;
+$SETTINGS['max_filesize'] = 0;
 
 
-$CONFIG['resume_transfers'] = false;
+$SETTINGS['download_speed_limit'] = 0;
 
 
-$CONFIG['queue_transfers'] = true;
-
-$CONFIG['cookies_on_server'] = false;
+$SETTINGS['resume_transfers'] = false;
 
 
-$CONFIG['cookies_folder'] = $CONFIG['tmp_dir'] . 'cookies/';
+$SETTINGS['queue_transfers'] = true;
+
+$SETTINGS['cookies_on_server'] = false;
 
 
-$CONFIG['encode_cookies'] = false;
-
-$CONFIG['tmp_cleanup_interval'] = 0;
+$SETTINGS['cookies_folder'] = $SETTINGS['tmp_dir'] . 'cookies/';
 
 
-$CONFIG['tmp_cleanup_logs'] = 0;
+$SETTINGS['encode_cookies'] = false;
+
+$SETTINGS['tmp_cleanup_interval'] = 0;
 
 
-$CONFIG['options']['encodeURL'] = array(
+$SETTINGS['tmp_cleanup_logs'] = 0;
+
+
+$SETTINGS['options']['encodeURL'] = array(
     'title' => 'Encrypt URL',
     'desc' => 'Encrypts the URL of the page you are viewing so that it does not contain the target site in plaintext.',
     'default' => true,
     'force' => false
 );
 
-$CONFIG['options']['encodePage'] = array(
+$SETTINGS['options']['encodePage'] = array(
     'title' => 'Encrypt Page',
     'desc' => 'Helps avoid filters by encrypting the page before sending it and decrypting it with javascript once received.',
     'default' => false,
     'force' => false
 );
 
-$CONFIG['options']['showForm'] = array(
+$SETTINGS['options']['showForm'] = array(
     'title' => 'Show Form',
     'desc' => 'This provides a mini form at the top of each page to allow you to quickly jump to another site without returning to our homepage.',
     'default' => true,
     'force' => true
 );
 
-$CONFIG['options']['allowCookies'] = array(
+$SETTINGS['options']['allowCookies'] = array(
     'title' => 'Allow Cookies',
     'desc' => 'Cookies may be required on interactive websites (especially where you need to log in) but advertisers also use cookies to track your browsing habits.',
     'default' => true,
     'force' => false
 );
 
-$CONFIG['options']['tempCookies'] = array(
+$SETTINGS['options']['tempCookies'] = array(
     'title' => 'Force Temporary Cookies',
     'desc' => 'This option overrides the expiry date for all cookies and sets it to at the end of the session only - all cookies will be deleted when you shut your browser. (Recommended)',
     'default' => true,
     'force' => true
 );
 
-$CONFIG['options']['stripTitle'] = array(
+$SETTINGS['options']['stripTitle'] = array(
     'title' => 'Remove Page Titles',
     'desc' => 'Removes titles from proxied pages.',
     'default' => false,
     'force' => true
 );
 
-$CONFIG['options']['stripJS'] = array(
+$SETTINGS['options']['stripJS'] = array(
     'title' => 'Remove Scripts',
     'desc' => 'Remove scripts to protect your anonymity and speed up page loads. However, not all sites will provide an HTML-only alternative. (Recommended)',
     'default' => true,
     'force' => false
 );
 
-$CONFIG['options']['stripObjects'] = array(
+$SETTINGS['options']['stripObjects'] = array(
     'title' => 'Remove Objects',
     'desc' => 'You can increase page load times by removing unnecessary Flash, Java and other objects. If not removed, these may also compromise your anonymity.',
     'default' => true,
@@ -143,4 +143,4 @@ $CONFIG['options']['stripObjects'] = array(
 );
 
 
-$CONFIG['version'] = '1.0.1';
+$SETTINGS['version'] = '1.0.1';

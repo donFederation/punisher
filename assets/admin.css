@@ -4,31 +4,33 @@
     border-radius: 5px !important;
 }
 
-html{
-    margin: 0!important;
+html {
+    margin: 0 !important;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     padding: 15px 0;
-    background: url('bg.jpg') center center fixed!important;
-    font-size:11px !important;
-    height:100% !important;
+    background: url('bg.jpg') center center fixed !important;
+    font-size: 11px !important;
+    height: 100% !important;
 }
+
 body {
     height: 0px;
     margin-top: -25%;
     opacity: 0;
     filter: blur(25px)
 }
+
 body.loaded {
     margin: 0;
-    height:100%;
-    background:none;
-    opacity:1;
+    height: 100%;
+    background: none;
+    opacity: 1;
     filter: blur(0px);
 }
 
 #wrap {
     max-width: 1200px;
-    width:90%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -285,6 +287,7 @@ body.loaded {
     margin-bottom: 15px;
     background: #eee
 }
+
 .form_table {
     margin-bottom: 15px;
 }

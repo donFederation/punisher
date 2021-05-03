@@ -77,13 +77,13 @@ if (preg_match('#^(0|10|127|169\.254|192\.168|172\.(?:1[6-9]|2[0-9]|3[01])|2[2-5
     error('banned_site', $host);
 }
 
-if ($CONFIG['stop_hotlinking'] && empty($_SESSION['no_hotlink'])) {
+if ($SETTINGS['stop_hotlinking'] && empty($_SESSION['no_hotlink'])) {
 
     $tmp = true;
 
     if (!empty($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'http') === 0) {
 
-        foreach (array_merge((array)PUNISH_URL, $CONFIG['hotlink_domains']) as $domain) {
+        foreach (array_merge((array)PUNISH_URL, $SETTINGS['hotlink_domains']) as $domain) {
 
             if (stripos($_SERVER['HTTP_REFERER'], $domain) !== false) {
 
@@ -101,11 +101,11 @@ if ($CONFIG['stop_hotlinking'] && empty($_SESSION['no_hotlink'])) {
 
 $_SESSION['no_hotlink'] = true;
 
-if (!empty($CONFIG['whitelist'])) {
+if (!empty($SETTINGS['whitelist'])) {
 
     $tmp = false;
 
-    foreach ($CONFIG['whitelist'] as $domain) {
+    foreach ($SETTINGS['whitelist'] as $domain) {
 
         if (strpos($URL['host'], $domain) !== false) {
 
@@ -121,9 +121,9 @@ if (!empty($CONFIG['whitelist'])) {
 
 }
 
-if (!empty($CONFIG['blacklist'])) {
+if (!empty($SETTINGS['blacklist'])) {
 
-    foreach ($CONFIG['blacklist'] as $domain) {
+    foreach ($SETTINGS['blacklist'] as $domain) {
 
         if (strpos($URL['host'], $domain) !== false) {
 
@@ -136,7 +136,7 @@ if (!empty($CONFIG['blacklist'])) {
 }
 
 
-if ($URL['scheme'] == 'https' && $CONFIG['ssl_warning'] && empty($_SESSION['ssl_warned']) && !HTTPS) {
+if ($URL['scheme'] == 'https' && $SETTINGS['ssl_warning'] && empty($_SESSION['ssl_warned']) && !HTTPS) {
 
     $_SESSION['return'] = currentURL();
 
@@ -150,13 +150,13 @@ if ($URL['scheme'] == 'https' && $CONFIG['ssl_warning'] && empty($_SESSION['ssl_
 
 
 global $foundPlugin;
-$plugins = explode(',', $CONFIG['plugins']);
+$plugins = explode(',', $SETTINGS['plugins']);
 if ($foundPlugin = in_array($URL['domain'], $plugins)) {
     include(PUNISH_ROOT . '/plugins/' . $URL['domain'] . '.php');
 }
 
 
-if (!$CONFIG['queue_transfers']) {
+if (!$SETTINGS['queue_transfers']) {
 
     session_write_close();
 
@@ -165,14 +165,14 @@ if (!$CONFIG['queue_transfers']) {
 
 if (
 
-    $CONFIG['load_limit']
+    $SETTINGS['load_limit']
 
 
     && !in_array($URL['extension'], array('jpg', 'jpeg', 'png', 'gif', 'css', 'js', 'ico'))
 ) {
 
 
-    if (!file_exists($file = $CONFIG['tmp_dir'] . 'load.php') || !(include $file) || !isset($load, $lastChecked) || $lastChecked < $_SERVER['REQUEST_TIME'] - 60) {
+    if (!file_exists($file = $SETTINGS['tmp_dir'] . 'load.php') || !(include $file) || !isset($load, $lastChecked) || $lastChecked < $_SERVER['REQUEST_TIME'] - 60) {
 
         $load = (float)0;
 
@@ -184,14 +184,14 @@ if (
 
     }
 
-    if ($load > $CONFIG['load_limit']) {
+    if ($load > $SETTINGS['load_limit']) {
         error('server_busy'); # Show error
     }
 }
 
-$toSet[CURLOPT_CONNECTTIMEOUT] = $CONFIG['connection_timeout'];
+$toSet[CURLOPT_CONNECTTIMEOUT] = $SETTINGS['connection_timeout'];
 
-$toSet[CURLOPT_TIMEOUT] = $CONFIG['transfer_timeout'];
+$toSet[CURLOPT_TIMEOUT] = $SETTINGS['transfer_timeout'];
 
 
 $toSet[CURLOPT_SSL_VERIFYPEER] = false;
@@ -211,15 +211,15 @@ if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
 
 }
 
-if ($CONFIG['resume_transfers'] && isset($_SERVER['HTTP_RANGE'])) {
+if ($SETTINGS['resume_transfers'] && isset($_SERVER['HTTP_RANGE'])) {
 
     $toSet[CURLOPT_RANGE] = substr($_SERVER['HTTP_RANGE'], 6);
 
 }
 
-if ($CONFIG['max_filesize'] && defined('CURLOPT_MAXFILESIZE')) {
+if ($SETTINGS['max_filesize'] && defined('CURLOPT_MAXFILESIZE')) {
 
-    $toSet[CURLOPT_MAXFILESIZE] = $CONFIG['max_filesize'];
+    $toSet[CURLOPT_MAXFILESIZE] = $SETTINGS['max_filesize'];
 
 }
 
@@ -267,17 +267,17 @@ if (isset($_SESSION['authenticate'][$URL['scheme_host']])) {
 
 if ($options['allowCookies']) {
 
-    if ($CONFIG['cookies_on_server']) {
+    if ($SETTINGS['cookies_on_server']) {
 
-        if ($s = checkTmpDir($CONFIG['cookies_folder'], 'Deny from all')) {
+        if ($s = checkTmpDir($SETTINGS['cookies_folder'], 'Deny from all')) {
 
-            $toSet[CURLOPT_COOKIEFILE] = $toSet[CURLOPT_COOKIEJAR] = $CONFIG['cookies_folder'] . punisher_session_id();
+            $toSet[CURLOPT_COOKIEFILE] = $toSet[CURLOPT_COOKIEJAR] = $SETTINGS['cookies_folder'] . punisher_session_id();
 
         }
 
     } else if (isset($_COOKIE[COOKIE_PREFIX])) {
 
-        if ($CONFIG['encode_cookies']) {
+        if ($SETTINGS['encode_cookies']) {
 
             foreach ($_COOKIE[COOKIE_PREFIX] as $attributes => $value) {
 
@@ -570,27 +570,27 @@ class Request
     public function __construct($curlOptions)
     {
 
-        global $options, $CONFIG;
+        global $options, $SETTINGS;
 
         $curlOptions[CURLOPT_HEADERFUNCTION] = array(&$this, 'readHeader');
         $curlOptions[CURLOPT_WRITEFUNCTION] = array(&$this, 'readBody');
 
-        if ($options['allowCookies'] && !$CONFIG['cookies_on_server']) {
-            $this->forwardCookies = $CONFIG['encode_cookies'] ? 'encode' : 'normal';
+        if ($options['allowCookies'] && !$SETTINGS['cookies_on_server']) {
+            $this->forwardCookies = $SETTINGS['encode_cookies'] ? 'encode' : 'normal';
         }
 
-        if ($CONFIG['max_filesize']) {
-            $this->limitFilesize = $CONFIG['max_filesize'];
+        if ($SETTINGS['max_filesize']) {
+            $this->limitFilesize = $SETTINGS['max_filesize'];
         }
 
-        if ($CONFIG['download_speed_limit']) {
-            $this->speedLimit = $CONFIG['download_speed_limit'];
+        if ($SETTINGS['download_speed_limit']) {
+            $this->speedLimit = $SETTINGS['download_speed_limit'];
         }
 
         $this->browsingOptions = $options;
         $this->curlOptions = $curlOptions;
 
-        set_time_limit($CONFIG['transfer_timeout']);
+        set_time_limit($SETTINGS['transfer_timeout']);
 
         if (DEBUG_MODE) {
             $this->cookiesSent = isset($curlOptions[CURLOPT_COOKIE]) ? $curlOptions[CURLOPT_COOKIE] : (isset($curlOptions[CURLOPT_COOKIEFILE]) ? 'using cookie jar' : 'none');
@@ -1005,7 +1005,7 @@ if ($fetch->abort) {
                 exit;
             }
 
-            error('file_too_large', round($CONFIG['max_filesize'] / 1024 / 1024, 3));
+            error('file_too_large', round($SETTINGS['max_filesize'] / 1024 / 1024, 3));
             exit;
 
         case 'http_status_error':
@@ -1066,7 +1066,7 @@ if ($fetch->parseType) {
                 if ($options['showForm']) {
                     $toShow = array();
 
-                    foreach ($CONFIG['options'] as $name => $details) {
+                    foreach ($SETTINGS['options'] as $name => $details) {
 
                         if (!empty($details['force'])) {
                             continue;
@@ -1091,14 +1091,14 @@ if ($fetch->parseType) {
 
                     $insert = loadTemplate('framedForm.inc', $vars);
 
-                    if ($CONFIG['override_javascript']) {
+                    if ($SETTINGS['override_javascript']) {
                         $insert = '<script type="text/javascript">disableOverride();</script>'
                             . $insert
                             . '<script type="text/javascript">enableOverride();</script>';
                     }
                 }
 
-                $footer = $CONFIG['footer_include'];
+                $footer = $SETTINGS['footer_include'];
 
             }
 
@@ -1130,7 +1130,7 @@ if ($fetch->parseType) {
 
     if (!DEBUG_MODE) {
 
-        if ($CONFIG['gzip_return'] && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false && extension_loaded('zlib') && !ini_get('zlib.output_compression')) {
+        if ($SETTINGS['gzip_return'] && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false && extension_loaded('zlib') && !ini_get('zlib.output_compression')) {
 
             header('Content-Encoding: gzip');
             echo gzencode($document, 3);
@@ -1151,11 +1151,11 @@ if (DEBUG_MODE) {
     echo '<pre>', print_r($fetch, 1), '</pre>';
 }
 
-if ($CONFIG['enable_logging'] && ($CONFIG['log_all'] || $fetch->parseType == 'html')) {
+if ($SETTINGS['enable_logging'] && ($SETTINGS['log_all'] || $fetch->parseType == 'html')) {
 
-    if (checkTmpDir($CONFIG['logging_destination'], 'Deny from all')) {
+    if (checkTmpDir($SETTINGS['logging_destination'], 'Deny from all')) {
 
-        $file = $CONFIG['logging_destination'] . '/' . date('Y-m-d') . '.log';
+        $file = $SETTINGS['logging_destination'] . '/' . date('Y-m-d') . '.log';
 
         $write = str_pad($_SERVER['REMOTE_ADDR'] . ', ', 17) . date('d/M/Y:H:i:s O') . ', ' . $URL['href'] . "\r\n";
 

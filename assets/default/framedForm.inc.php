@@ -111,30 +111,32 @@
     // Print form using variables (saves repeatedly opening/closing PHP tags)
     // Edit as if normal HTML but escape any dollar signs
     ?>
-   <form action="<?=$proxy?>/inc/process.php?action=update" target="_top" method="post" onsubmit="return updateLocation(this);">
-<?php
+    <form action="<?= $proxy ?>/inc/process.php?action=update" target="_top" method="post"
+          onsubmit="return updateLocation(this);">
+        <?php
 
-    ?>
+        ?>
 
-         <input type="text" name="u" size="40" value="<?=$url?>" class="url-input" style="width:100%;" />
-         <input type="submit" value="Go" class="url-input url-button" />
-         </br>
-         <span>
-         [<a href="<?=$proxy?>/index.php" target="_top">home</a>]
-         [<a href="<?=$proxy?>/inc/process.php?action=clear-cookies&return=<?=$return?>" target="_top">clear cookies</a>]
+        <input type="text" name="u" size="40" value="<?= $url ?>" class="url-input" style="width:100%;"/>
+        <input type="submit" value="Go" class="url-input url-button"/>
+        </br>
+        <span>
+         [<a href="<?= $proxy ?>/index.php" target="_top">home</a>]
+         [<a href="<?= $proxy ?>/inc/process.php?action=clear-cookies&return=<?= $return ?>"
+             target="_top">clear cookies</a>]
          
 
 <?php
 
-    // Loop through the options and print with appropriate checkedness
-    foreach ($toShow as $details) {
-        ?>
-         <input type="checkbox" name="<?=$details['name']?>" id="<?=$details['name']?>"<?=$details['checked']?> />
-         <label for="<?=$details['name']?>"><?=$details['title']?></label>
-<?php
-
-    }
+// Loop through the options and print with appropriate checkedness
+foreach ($toShow as $details) {
     ?>
+    <input type="checkbox" name="<?= $details['name'] ?>" id="<?= $details['name'] ?>"<?= $details['checked'] ?> />
+    <label for="<?= $details['name'] ?>"><?= $details['title'] ?></label>
+    <?php
+
+}
+?>
     </form>
     </span>
     <punisher>punish'em</punisher>

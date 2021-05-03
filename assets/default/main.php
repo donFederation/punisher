@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
-<html  style="background:#000 ;font-size:11px ">
+<html style="background:#000 ;font-size:11px ">
 <head>
     <title><!--[site_name]--></title>
     <meta name="description" content="<!--[meta_description]-->">

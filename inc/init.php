@@ -43,7 +43,7 @@ define('ALPHABET', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567
 require PUNISH_ROOT . '/inc/settings.php';
 
 
-if ($CONFIG['enable_blockscript']) {
+if ($SETTINGS['enable_blockscript']) {
     define('BS_REDIRECTION_URL', 'http://proxy.org/proxy.pl?proxy=random');
     include_once($_SERVER['DOCUMENT_ROOT'] . '/blockscript/detector.php');
 }
@@ -69,7 +69,7 @@ $assetReplace['version'] = 'v1.0.1';
 # Look for a config.php in the /assets/assetName/ folder
 # If running multiple proxies off the same source files
 # set the MULTIPUNISH constant to stop the script automatically loading asset config files.
-if (!defined('MULTIPUNISH') && file_exists($tmp = PUNISH_ROOT . '/assets/' . $CONFIG['asset'] . '/config.php')) {
+if (!defined('MULTIPUNISH') && file_exists($tmp = PUNISH_ROOT . '/assets/' . $SETTINGS['asset'] . '/config.php')) {
 
     # Load it
     include $tmp;
@@ -93,12 +93,12 @@ if (punisher_session_id() == '') {
 
 # Only check once per session or if the IP address changes
 if (empty($_SESSION['ip_verified']) || $_SESSION['ip_verified'] != $_SERVER['REMOTE_ADDR']) {
-    if (!$CONFIG['enable_blockscript']) {
+    if (!$SETTINGS['enable_blockscript']) {
         # Current IP matches a banned IP? true/false
         $banned = false;
 
         # Examine all IP bans
-        foreach ($CONFIG['ip_bans'] as $ip) {
+        foreach ($SETTINGS['ip_bans'] as $ip) {
 
             # Is this a range or single?
             if (($pos = strspn($ip, '0123456789.')) == strlen($ip)) {
@@ -183,7 +183,7 @@ if (empty($_SESSION['ip_verified']) || $_SESSION['ip_verified'] != $_SERVER['REM
 
 
 # First, find the bitfield!
-if ($CONFIG['path_info_urls'] && !empty($_SERVER['PATH_INFO']) && preg_match('#/b([0-9]{1,5})(?:/f([a-z]{1,10}))?/?$#', $_SERVER['PATH_INFO'], $tmp)) {
+if ($SETTINGS['path_info_urls'] && !empty($_SERVER['PATH_INFO']) && preg_match('#/b([0-9]{1,5})(?:/f([a-z]{1,10}))?/?$#', $_SERVER['PATH_INFO'], $tmp)) {
 
     # Found a /bXX/ value at end of path info
     $bitfield = $tmp[1];
@@ -218,7 +218,7 @@ if (!isset($flag)) {
 $i = 0;
 
 # Loop through the possible options
-foreach ($CONFIG['options'] as $name => $details) {
+foreach ($SETTINGS['options'] as $name => $details) {
 
     # Is the option forced?
     if (!empty($details['force'])) {
@@ -275,7 +275,7 @@ if (!isset($_SESSION['unique_salt'])) {
 $GLOBALS['unique_salt'] = $_SESSION['unique_salt'];
 
 
-if ($CONFIG['override_javascript']) {
+if ($SETTINGS['override_javascript']) {
     $jsFlags = isset($_SESSION['js_flags']) ? $_SESSION['js_flags'] : false;
 } else {
     $jsFlags = null;
@@ -297,7 +297,7 @@ if (!isset($_SESSION['custom_browser'])) {
 # will load the resource through our proxy
 function proxyURL($url, $givenFlag = false)
 {
-    global $CONFIG, $options, $bitfield, $flag;
+    global $SETTINGS, $options, $bitfield, $flag;
 
     # Remove excess whitespace
     $url = trim($url);
@@ -349,7 +349,7 @@ function proxyURL($url, $givenFlag = false)
     $addFlag = $givenFlag ? $givenFlag : ($flag == 'frame' ? 'frame' : '');
 
     # Return in path info format (only when encoding is on)
-    if ($CONFIG['path_info_urls'] && $options['encodeURL']) {
+    if ($SETTINGS['path_info_urls'] && $options['encodeURL']) {
         return PUNISH_BROWSE . '/' . str_replace('%', '_', chunk_split($url, 8, '/')) . 'b' . $bitfield . '/' . ($addFlag ? 'f' . $addFlag : '') . $anchor;
     }
 
@@ -557,13 +557,13 @@ function loadTemplate($file, $vars = array())
 # Take a template name and return absolute path
 function getTemplatePath($file)
 {
-    global $CONFIG;
+    global $SETTINGS;
 
     # First look in custom asset folder
-    if (!file_exists($return = PUNISH_ROOT . '/assets/' . $CONFIG['asset'] . '/' . $file . '.php')) {
+    if (!file_exists($return = PUNISH_ROOT . '/assets/' . $SETTINGS['asset'] . '/' . $file . '.php')) {
 
         # Then look in default folder (if different)
-        if ($CONFIG['asset'] == 'default' || !file_exists($return = PUNISH_ROOT . '/assets/default/' . $file . '.php')) {
+        if ($SETTINGS['asset'] == 'default' || !file_exists($return = PUNISH_ROOT . '/assets/default/' . $file . '.php')) {
 
             # Still not found? Fail.
             return false;
@@ -603,9 +603,9 @@ function replaceAssetTags($template)
 
 function render($b)
 {
-    global $CONFIG;
+    global $SETTINGS;
     if (defined('LCNSE_KEY')) {
-        $CONFIG['license_key'] = LCNSE_KEY;
+        $SETTINGS['license_key'] = LCNSE_KEY;
     }
     if ($b) {
         $r = array();
@@ -718,7 +718,7 @@ function setBit(&$value, $bit)
 
 function injectionJS()
 {
-    global $CONFIG, $URL, $options, $base, $bitfield, $jsFlags;
+    global $SETTINGS, $URL, $options, $base, $bitfield, $jsFlags;
 
     # Prepare options to make available for our javascript
 
@@ -742,14 +742,14 @@ function injectionJS()
     $unique = isset($GLOBALS['unique_salt']) ? $GLOBALS['unique_salt'] : '';
 
     # Do we want to override javascript and/or test javascript client-side capabilities?
-    $optional = isset($URL) && $CONFIG['override_javascript'] ? ',override:1' : '';
+    $optional = isset($URL) && $SETTINGS['override_javascript'] ? ',override:1' : '';
     $optional .= $jsFlags === false ? ',test:1' : '';
 
     # Path to our javascript file
-    $jsFile = PUNISH_URL . '/inc/main.js?' . $CONFIG['version'];
+    $jsFile = PUNISH_URL . '/inc/main.js?' . $SETTINGS['version'];
 
     return <<<OUT
-	<script type="text/javascript">ginf={url:'{$siteURL}',script:'{{}$scriptName}',target:{h:'{$targetHost}',p:'{$targetPath}',b:'{$base}',u:'{$fullURL}'},enc:{u:'{$unique}',e:'{$options['encodeURL']}',x:'{$options['encodePage']}',p:'{$CONFIG['path_info_urls']}'},b:'{$bitfield}'{$optional}}</script>
+	<script type="text/javascript">ginf={url:'{$siteURL}',script:'{{}$scriptName}',target:{h:'{$targetHost}',p:'{$targetPath}',b:'{$base}',u:'{$fullURL}'},enc:{u:'{$unique}',e:'{$options['encodeURL']}',x:'{$options['encodePage']}',p:'{$SETTINGS['path_info_urls']}'},b:'{$bitfield}'{$optional}}</script>
 	<script type="text/javascript" src="{$jsFile}"></script>
 OUT;
 }
@@ -827,7 +827,7 @@ function redirect($to = 'index.php')
 # Error message
 function error($type, $allowReload = false)
 {
-    global $CONFIG, $assetReplace, $options, $phrases, $flag;
+    global $SETTINGS, $assetReplace, $options, $phrases, $flag;
 
     # Get extra arguments
     $args = func_get_args();
@@ -869,7 +869,7 @@ function error($type, $allowReload = false)
     $toShow = array();
 
     # Loop through the available options
-    foreach ($CONFIG['options'] as $name => $details) {
+    foreach ($SETTINGS['options'] as $name => $details) {
         # Check we're allowed to choose
         if (!empty($details['force'])) {
             continue;
@@ -916,7 +916,7 @@ function currentURL()
 function checkTmpDir($path, $htaccess = false)
 {
 
-    global $CONFIG;
+    global $SETTINGS;
 
     # Does it already exist?
     if (file_exists($path)) {
@@ -933,7 +933,7 @@ function checkTmpDir($path, $htaccess = false)
 
         # Does not exist, can we create it? (No if the desired dir is not
         # inside the temp dir)
-        if (is_writable($CONFIG['tmp_dir']) && realpath($CONFIG['tmp_dir']) == realpath(dirname($path) . '/') && mkdir($path, 0755, true)) {
+        if (is_writable($SETTINGS['tmp_dir']) && realpath($SETTINGS['tmp_dir']) == realpath(dirname($path) . '/') && mkdir($path, 0755, true)) {
 
             # New dir, protect it with .htaccess
             if ($htaccess) {

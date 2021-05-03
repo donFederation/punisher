@@ -10,185 +10,187 @@ ob_start();
 
 
 ?>
-	<h2 class="first">Manage Cookies</h2>
-	<p>You can view and delete cookies set on your computer by sites accessed through our service. Your cookies are listed below:</p>
-	<form action="inc/process.php?action=cookies" method="post">
-		<table cellpadding="2" cellspacing="0" align="center">
-			<tr>
-				<th width="33%">Website</th>
-				<th width="33%">Name</th>
-				<th width="33%">Value</th>
-				<th>&nbsp;</th>
-			</tr>
+    <h2 class="first">Manage Cookies</h2>
+    <p>You can view and delete cookies set on your computer by sites accessed through our service. Your cookies are
+        listed below:</p>
+    <form action="inc/process.php?action=cookies" method="post">
+        <table cellpadding="2" cellspacing="0" align="center">
+            <tr>
+                <th width="33%">Website</th>
+                <th width="33%">Name</th>
+                <th width="33%">Value</th>
+                <th>&nbsp;</th>
+            </tr>
 
-<?php
+            <?php
 
 
-# Server side storage
-if ($CONFIG['cookies_on_server']) {
+            # Server side storage
+            if ($SETTINGS['cookies_on_server']) {
 
-    # Check cookie file exists
-    if (file_exists($cookieFile = $CONFIG['cookies_folder'] . punisher_session_id())) {
+                # Check cookie file exists
+                if (file_exists($cookieFile = $SETTINGS['cookies_folder'] . punisher_session_id())) {
 
-        # Load into array
-        if ($cookieLine = file($cookieFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)) {
+                    # Load into array
+                    if ($cookieLine = file($cookieFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)) {
 
-            # Process line by line
-            foreach ($cookieLine as $line) {
+                        # Process line by line
+                        foreach ($cookieLine as $line) {
 
-                # Comment line?
-                if (!isset($line[0]) || $line[0] == '#') {
-                    continue;
+                            # Comment line?
+                            if (!isset($line[0]) || $line[0] == '#') {
+                                continue;
+                            }
+
+                            # Clear newlines
+                            $line = rtrim($line);
+
+                            # Split by tab
+                            $details = explode("\t", $line);
+
+                            # Check valid split, expecting 7 items
+                            if (count($details) != 7) {
+                                continue;
+                            }
+
+                            # Save in array(domain, path, name value)
+                            $showCookies[] = array($details[0], $details[2], $details[5], $details[6]);
+
+                        }
+                    }
                 }
 
-                # Clear newlines
-                $line = rtrim($line);
+            } else if (isset($_COOKIE[COOKIE_PREFIX])) {
 
-                # Split by tab
-                $details = explode("\t", $line);
+                # Cookies on client
 
-                # Check valid split, expecting 7 items
-                if (count($details) != 7) {
-                    continue;
-                }
+                # Encoded or unencoded?
+                if ($SETTINGS['encode_cookies']) {
 
-                # Save in array(domain, path, name value)
-                $showCookies[] = array($details[0], $details[2], $details[5], $details[6]);
+                    # Encoded cookies stored client-side
+                    foreach ($_COOKIE[COOKIE_PREFIX] as $attributes => $value) {
 
-            }
-        }
-    }
+                        # Decode cookie to [domain,path,name]
+                        $attributes = explode(' ', base64_decode($attributes));
 
-} else if (isset($_COOKIE[COOKIE_PREFIX])) {
+                        # Check successful decoding and skip if failed
+                        if (!isset($attributes[2])) {
+                            continue;
+                        }
 
-    # Cookies on client
+                        # Extract parts
+                        list($domain, $path, $name) = $attributes;
 
-    # Encoded or unencoded?
-    if ($CONFIG['encode_cookies']) {
+                        # Decode cookie value
+                        $value = base64_decode($value);
 
-        # Encoded cookies stored client-side
-        foreach ($_COOKIE[COOKIE_PREFIX] as $attributes => $value) {
+                        # Secure cookies marked by !SEC suffix so remove the suffix
+                        $value = str_replace('!SEC', '', $value);
 
-            # Decode cookie to [domain,path,name]
-            $attributes = explode(' ', base64_decode($attributes));
+                        # Add cookie
+                        $showCookies[] = array($domain, $path, $name, $value);
+                    }
 
-            # Check successful decoding and skip if failed
-            if (!isset($attributes[2])) {
-                continue;
-            }
+                } else {
 
-            # Extract parts
-            list($domain, $path, $name) = $attributes;
+                    # Unencoded cookies stored client-side
+                    foreach ($_COOKIE[COOKIE_PREFIX] as $domain => $paths) {
 
-            # Decode cookie value
-            $value = base64_decode($value);
+                        # $domain holds the domain (surprisingly) and $path is an array
+                        # of keys (paths) and more arrays (each child array of $path = one cookie)
+                        # e.g. Array('domain.com' => Array('/' => Array('cookie_name' => 'value')))
 
-            # Secure cookies marked by !SEC suffix so remove the suffix
-            $value = str_replace('!SEC', '', $value);
+                        foreach ($paths as $path => $cookies) {
 
-            # Add cookie
-            $showCookies[] = array($domain, $path, $name, $value);
-        }
+                            foreach ($cookies as $name => $value) {
 
-    } else {
+                                # Secure cookies marked by !SEC suffix so remove the suffix
+                                $value = str_replace('!SEC', '', $value);
 
-        # Unencoded cookies stored client-side
-        foreach ($_COOKIE[COOKIE_PREFIX] as $domain => $paths) {
+                                # Add cookie
+                                $showCookies[] = array($domain, $path, $name, $value);
 
-            # $domain holds the domain (surprisingly) and $path is an array
-            # of keys (paths) and more arrays (each child array of $path = one cookie)
-            # e.g. Array('domain.com' => Array('/' => Array('cookie_name' => 'value')))
-
-            foreach ($paths as $path => $cookies) {
-
-                foreach ($cookies as $name => $value) {
-
-                    # Secure cookies marked by !SEC suffix so remove the suffix
-                    $value = str_replace('!SEC', '', $value);
-
-                    # Add cookie
-                    $showCookies[] = array($domain, $path, $name, $value);
-
+                            }
+                        }
+                    }
                 }
             }
-        }
-    }
-}
 
 
-# Any to print?
-if (empty($showCookies)) {
+            # Any to print?
+            if (empty($showCookies)) {
 
-    ?>
-		<tr>
-			<td colspan="4" align="center">No cookies found</td>
-		</tr>
+                ?>
+                <tr>
+                    <td colspan="4" align="center">No cookies found</td>
+                </tr>
 
-<?php
+                <?php
 
-} else {
+            } else {
 
-    # Loop through and print them
-    foreach ($showCookies as $id => $cookie) {
+                # Loop through and print them
+                foreach ($showCookies as $id => $cookie) {
 
-        # Join domain & path to create "website"
-        $website = $cookie[0] . ($cookie[1] == '/' ? '' : $cookie[1]);
+                    # Join domain & path to create "website"
+                    $website = $cookie[0] . ($cookie[1] == '/' ? '' : $cookie[1]);
 
-        # Cookie name
-        $name = htmlentities($cookie[2]);
+                    # Cookie name
+                    $name = htmlentities($cookie[2]);
 
-        # Get cookie value
-        $value = $cookie[3];
+                    # Get cookie value
+                    $value = $cookie[3];
 
-        # Truncate value to avoid stretching page
-        if (strlen($value) > 35) {
+                    # Truncate value to avoid stretching page
+                    if (strlen($value) > 35) {
 
-            # Create a row ID
-            $rowID = 'cookieRow' . $id;
+                        # Create a row ID
+                        $rowID = 'cookieRow' . $id;
 
-            # Wrap the long value and escape ' so we can use it in javascript
-            $wrapped = str_replace("'", "\'", wordwrap($cookie[3], 30, ' ', true));
+                        # Wrap the long value and escape ' so we can use it in javascript
+                        $wrapped = str_replace("'", "\'", wordwrap($cookie[3], 30, ' ', true));
 
-            # Truncate the string
-            $truncated = substr($value, 0, 30);
+                        # Truncate the string
+                        $truncated = substr($value, 0, 30);
 
-            # Replace the value with a shorten version that expands onclick
-            $value = <<<OUT
+                        # Replace the value with a shorten version that expands onclick
+                        $value = <<<OUT
 			<span id="<?=$rowID?>"><?=$truncated?><a style="cursor:pointer;" onclick="document.getElementById('<?=$rowID?>').innerHTML='<?=$wrapped?>';">...</a></span>
 OUT;
+                    }
+
+                    ?>
+                    <tr>
+                        <td><?= $website ?></td>
+                        <td><?= $name ?></td>
+                        <td><?= $value ?></td>
+                        <td><input type="checkbox" name="delete[]"
+                                   value="<?= $cookie[0] ?>|<?= $cookie[1] ?>|<?= $name ?>"></td>
+                    </tr>
+
+                    <?php
+                }
+
+            }
+
+
+            ?>
+            <tr>
+                <th colspan="3" align="right"><input type="submit" value="Delete"></th>
+                <th><input type="checkbox" name="checkall" onclick="selectAll(this)"></th>
+            </tr>
+        </table>
+    </form>
+    <script type="text/javascript">
+        function selectAll(checkbox) {
+            var theForm = checkbox.form;
+            for (var z = 0; z < theForm.length; z++) {
+                if (theForm[z].type == 'checkbox' && theForm[z].name != 'checkall') {
+                    theForm[z].checked = checkbox.checked;
+                }
+            }
         }
-
-        ?>
-			<tr>
-				<td><?=$website?></td>
-				<td><?=$name?></td>
-				<td><?=$value?></td>
-				<td><input type="checkbox" name="delete[]" value="<?=$cookie[0]?>|<?=$cookie[1]?>|<?=$name?>"></td>
-			</tr>
-
-<?php
-    }
-
-}
-
-
-?>
-			<tr>
-				<th colspan="3" align="right"><input type="submit" value="Delete"></th>
-				<th><input type="checkbox" name="checkall"  onclick="selectAll(this)"></th>
-			</tr>
-		</table>
-	</form>
-	<script type="text/javascript">
-		function selectAll(checkbox) {
-			var theForm = checkbox.form;
-			for(var z=0; z<theForm.length;z++){
-				if(theForm[z].type == 'checkbox' && theForm[z].name != 'checkall'){
-					theForm[z].checked = checkbox.checked;
-				}
-			}
-		}
-	</script>
+    </script>
 <?php
 
 

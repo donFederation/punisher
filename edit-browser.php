@@ -32,58 +32,58 @@ $realReferrer = $browser['referrer'] == 'real' ? 'true' : 'false';
 $customReferrer = $browser['referrer'] == 'real' ? '' : escape_single_quotes($browser['referrer']);
 
 ?>
-	<script type="text/javascript">
+    <script type="text/javascript">
 
-		function updateCustomUA(select) {
+        function updateCustomUA(select) {
 
-			var newValue = select.value;
+            var newValue = select.value;
 
-			var customField = document.getElementById('user-agent');
+            var customField = document.getElementById('user-agent');
 
-			switch ( newValue ) {
-				case 'none':
-					newValue = '';
-					break;
-				case 'custom':
-					customField.focus();
-					return;
-			}
+            switch (newValue) {
+                case 'none':
+                    newValue = '';
+                    break;
+                case 'custom':
+                    customField.focus();
+                    return;
+            }
 
-			customField.value = newValue;
-		}
+            customField.value = newValue;
+        }
 
-		function setCustomUA() {
-			var setTo = document.getElementById('user-agent').value ? 'custom' : '';
-			setSelect(document.getElementById('user-agent-presets'), setTo);
-		}
+        function setCustomUA() {
+            var setTo = document.getElementById('user-agent').value ? 'custom' : '';
+            setSelect(document.getElementById('user-agent-presets'), setTo);
+        }
 
-		function setSelect(select, value) {
-			for ( var i=0; i < select.length; ++i ) {
-				if ( select[i].value == value ) {
-					select.selectedIndex = i;
-					return true;
-				}
-			}
-			return false
-		}
+        function setSelect(select, value) {
+            for (var i = 0; i < select.length; ++i) {
+                if (select[i].value == value) {
+                    select.selectedIndex = i;
+                    return true;
+                }
+            }
+            return false
+        }
 
-		function clearCustomReferrer(checkbox) {
-			if ( checkbox.checked ) {
-				document.getElementById('custom-referrer').value = '';
-			}
-		}
+        function clearCustomReferrer(checkbox) {
+            if (checkbox.checked) {
+                document.getElementById('custom-referrer').value = '';
+            }
+        }
 
-		function clearRealReferrer() {
-			document.getElementById('real-referrer').checked = '';
-		}
+        function clearRealReferrer() {
+            document.getElementById('real-referrer').checked = '';
+        }
 
-		window.addDomReadyFunc(function() {
-			document.getElementById('user-agent').value			= '<?=$currentUA}';
-			if ( setSelect(document.getElementById('user-agent-presets'), '<?=$currentUA}') == false ) {
+        window.addDomReadyFunc(function () {
+            document.getElementById('user-agent').value = '<?= $currentUA}';
+			if ( setSelect(document.getElementById('user - agent - presets'), ' <?=$currentUA}') == false ) {
 				setCustomUA();
 			}
-			document.getElementById('real-referrer').checked	= <?=$realReferrer};
-			document.getElementById('custom-referrer').value	= '<?=$customReferrer}';
+			document.getElementById('real - referrer').checked	= <?=$realReferrer};
+			document.getElementById('custom - referrer').value	= ' <?=$customReferrer}';
 		});
 	</script>
 
@@ -93,7 +93,7 @@ $customReferrer = $browser['referrer'] == 'real' ? '' : escape_single_quotes($br
 
 		<table cellpadding="2" cellspacing="0" align="center" class="large-table">
 			<tr>
-				<th colspan="2">User Agent (<a style="cursor:help;" onmouseover="tooltip('Your user agent is sent to the server and identifies the software you are using to access the internet.')" onmouseout="exit()">?</a>)</th>
+				<th colspan="2">User Agent (<a style="cursor:help;" onmouseover="tooltip('Your user agent is sent to the server and identifies the software you are using to access the internet . ')" onmouseout="exit()">?</a>)</th>
 			</tr>
 			<tr>
 				<td width="150">Choose from presets:</td>
@@ -135,7 +135,7 @@ $customReferrer = $browser['referrer'] == 'real' ? '' : escape_single_quotes($br
 
 		<table cellpadding="2" cellspacing="0" align="center" class="large-table">
 			<tr>
-				<th colspan="2">Referrer (<a style="cursor:help;" onmouseover="tooltip('The URL of the referring page is normally sent to the server. You can override this to a custom value or set to send no referrer for extra privacy.')" onmouseout="exit()">?</a>)</th>
+				<th colspan="2">Referrer (<a style="cursor:help;" onmouseover="tooltip('The URL of the referring page is normally sent to the server . You can override this to a custom value or set to send no referrer for extra privacy . ')" onmouseout="exit()">?</a>)</th>
 			</tr>
 			<tr>
 				<td width="150">Send real referrer:</td>
